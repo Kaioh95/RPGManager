@@ -8,6 +8,17 @@ public class Personagem {
     private String classe;
     private List<ItemRPG> itens;
 
+    private int Nivel = 0;
+    private int Forca = 0;
+    private int Constituicao = 0;
+    private int Inteligencia = 0;
+    private int Destreza = 0;
+    private int Sabedoria = 0;
+    private int Carisma = 0;
+    private int Vida = 0;
+
+    public Personagem(){ }
+
     public Personagem(String nome, int idade, String classe, List<ItemRPG> itens) {
         this.nome = nome;
         this.idade = idade;
@@ -45,5 +56,69 @@ public class Personagem {
 
     public void setItens(List<ItemRPG> itens) {
         this.itens = itens;
+    }
+
+    public int getNivel() {
+        return Nivel;
+    }
+
+    public void setNivel(int nivel) {
+        Nivel = nivel;
+    }
+
+    public int getForca() {
+        return Forca;
+    }
+
+    public void setForca(int forca) {
+        Forca = forca;
+    }
+
+    public int getConstituicao() {
+        return Constituicao;
+    }
+
+    public void setConstituicao(int constituicao) {
+        Constituicao = constituicao;
+    }
+
+    public int getInteligencia() {
+        return Inteligencia;
+    }
+
+    public void setInteligencia(int inteligencia) {
+        Inteligencia = inteligencia;
+    }
+
+    public int getDestreza() {
+        return Destreza;
+    }
+
+    public void setDestreza(int destreza) {
+        Destreza = destreza;
+    }
+
+    public int getSabedoria() {
+        return Sabedoria;
+    }
+
+    public void setSabedoria(int sabedoria) {
+        Sabedoria = sabedoria;
+    }
+
+    public int getCarisma() {
+        return Carisma;
+    }
+
+    public void setCarisma(int carisma) {
+        Carisma = carisma;
+    }
+
+    public int getVida() {
+        return Vida;
+    }
+
+    public void setVida(int vida) {
+        Vida = vida;
     }
 }

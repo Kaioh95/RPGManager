@@ -1,0 +1,877 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AtributosActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mochila"
+                android:gravity="center"
+                android:textSize="18dp"
+                android:paddingHorizontal="15dp">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Atributos"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:paddingTop="10dp"
+                android:paddingHorizontal="25dp">
+
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mochila"
+                android:visibility="invisible"
+                android:gravity="center"
+                android:textSize="18dp"
+                android:paddingHorizontal="15dp">
+
+
+            </TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:paddingVertical="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pontos: "
+                android:textSize="16dp">
+
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="16dp"
+                android:id="@+id/tvPontosAtuais">
+
+            </TextView>
+
+        </LinearLayout>
+
+        <!--Primeira Linha de Atributos-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:paddingVertical="4dp">
+
+            <Button
+                android:layout_width="30dp"
+                android:visibility="invisible"
+                android:layout_height="40dp"
+                android:text="-" />
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nível"
+                    android:gravity="center_horizontal"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvNivel"
+                    android:text="0"
+                    android:gravity="center_horizontal"/>
+            </LinearLayout>
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:text="+"
+                android:id="@+id/btnMaisNivel"/>
+
+        </LinearLayout>
+
+
+        <!--Fim da Primeira Linha de Atributos-->
+
+        <!--Segunda Linha de Atributos-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:paddingVertical="4dp">
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:text="-"
+                android:id="@+id/btnMenosForca"/>
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Força"
+                    android:gravity="center_horizontal"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvForca"
+                    android:text="0"
+                    android:gravity="center_horizontal"/>
+            </LinearLayout>
+
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:text="+"
+                android:id="@+id/btnMaisForca"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="            "
+                android:visibility="invisible"/>
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:text="-"
+                android:id="@+id/btnMenosConstituicao"/>
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Constituição"
+                    android:gravity="center_horizontal"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvConstituicao"
+                    android:text="0"
+                    android:gravity="center_horizontal"/>
+            </LinearLayout>
+
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:text="+"
+                android:id="@+id/btnMaisConstituicao"/>
+
+
+
+        </LinearLayout>
+
+
+        <!--Fim da Segunda Linha de Atributos-->
+
+        <!--Terceira Linha de Atributos-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:paddingVertical="4dp">
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:text="-"
+                android:id="@+id/btnMenosInteligencia"/>
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Inteligência"
+                    android:gravity="center_horizontal"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvInteligencia"
+                    android:text="0"
+                    android:gravity="center_horizontal"/>
+            </LinearLayout>
+
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:text="+"
+                android:id="@+id/btnMaisInteligencia"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="            "
+                android:visibility="invisible"/>
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:text="-"
+                android:id="@+id/btnMenosDestreza"/>
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Destreza"
+                    android:gravity="center_horizontal"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvDestreza"
+                    android:text="0"
+                    android:gravity="center_horizontal"/>
+            </LinearLayout>
+
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:text="+"
+                android:id="@+id/btnMaisDestreza"/>
+
+
+
+        </LinearLayout>
+
+        <!--Fim da Terceira Linha de Atributos-->
+
+        <!--Quarta Linha de Atributos-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:paddingVertical="4dp">
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:text="-"
+                android:id="@+id/btnMenosSabedoria"/>
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sabedoria"
+                    android:gravity="center_horizontal"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvSabedoria"
+                    android:text="0"
+                    android:gravity="center_horizontal"/>
+            </LinearLayout>
+
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:text="+"
+                android:id="@+id/btnMaisSabedoria"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="            "
+                android:visibility="invisible"/>
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:text="-"
+                android:id="@+id/btnMenosCarisma"/>
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Carisma"
+                    android:gravity="center_horizontal"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvCarisma"
+                    android:text="0"
+                    android:gravity="center_horizontal"/>
+            </LinearLayout>
+
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:text="+"
+                android:id="@+id/btnMaisCarisma"/>
+
+
+
+        </LinearLayout>
+
+        <!--Fim da Quarto Linha de Atributos-->
+
+        <!--Quinta Linha de Atributos-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:paddingVertical="4dp">
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:text="-"
+                android:id="@+id/btnMenosVida"/>
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Vida"
+                    android:gravity="center_horizontal"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvVida"
+                    android:text="0"
+                    android:gravity="center_horizontal"/>
+            </LinearLayout>
+
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:text="+"
+                android:id="@+id/btnMaisVida"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="            "
+                android:visibility="invisible"/>
+
+            <Button
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:id="@+id/btnResetar"
+                android:text="Resetar"
+                />
+
+
+
+
+        </LinearLayout>
+
+        <!--Fim da Quinta Linha de Atributos-->
+
+        <!--Sexta Linha de Atributos-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:paddingVertical="4dp">
+
+            <Button
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:id="@+id/btnCorfirmar"
+                android:text="Confirmar"
+                />
+
+        </LinearLayout>
+
+        <!--Fim da Sexta Linha de Atributos-->
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="5dp">
+
+                <LinearLayout
+                    android:layout_width="539px"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Força"
+                        android:textSize="18dp"
+                        android:gravity="center_horizontal"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+                     <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/progress_bar_background"
+                        >
+
+                        <ProgressBar
+                            android:id="@+id/pbForca"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:layout_margin="1dp"
+                            android:indeterminate="false"
+                            android:max="50"
+                            android:progress="20"
+                            android:progressDrawable="@drawable/curved_progress_bar"
+                            />
+
+                    </FrameLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="5dp">
+
+                <LinearLayout
+                    android:layout_width="539px"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Constituiçao"
+                        android:textSize="18dp"
+                        android:gravity="center_horizontal"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/progress_bar_background"
+                        >
+
+                        <ProgressBar
+                            android:id="@+id/pbConstituicao"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:layout_margin="1dp"
+                            android:indeterminate="false"
+                            android:max="50"
+                            android:progress="20"
+                            android:progressDrawable="@drawable/curved_progress_bar"
+                            />
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="5dp">
+
+                <LinearLayout
+                    android:layout_width="539px"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Inteligência"
+                        android:textSize="18dp"
+                        android:gravity="center_horizontal"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/progress_bar_background"
+                        >
+
+                        <ProgressBar
+                            android:id="@+id/pbInteligencia"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:layout_margin="1dp"
+                            android:indeterminate="false"
+                            android:max="50"
+                            android:progress="20"
+                            android:progressDrawable="@drawable/curved_progress_bar"
+                            />
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="5dp">
+
+                <LinearLayout
+                    android:layout_width="539px"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Destreza"
+                        android:textSize="18dp"
+                        android:gravity="center_horizontal"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/progress_bar_background"
+                        >
+
+                        <ProgressBar
+                            android:id="@+id/pbDestreza"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:layout_margin="1dp"
+                            android:indeterminate="false"
+                            android:max="50"
+                            android:progress="20"
+                            android:progressDrawable="@drawable/curved_progress_bar"
+                            />
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="5dp">
+
+                <LinearLayout
+                    android:layout_width="539px"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sabedoria"
+                        android:textSize="18dp"
+                        android:gravity="center_horizontal"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/progress_bar_background"
+                        >
+
+                        <ProgressBar
+                            android:id="@+id/pbSabedoria"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:layout_margin="1dp"
+                            android:indeterminate="false"
+                            android:max="50"
+                            android:progress="20"
+                            android:progressDrawable="@drawable/curved_progress_bar"
+                            />
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="5dp">
+
+                <LinearLayout
+                    android:layout_width="539px"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Carisma"
+                        android:textSize="18dp"
+                        android:gravity="center_horizontal"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/progress_bar_background"
+                        >
+
+                        <ProgressBar
+                            android:id="@+id/pbCarisma"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:layout_margin="1dp"
+                            android:indeterminate="false"
+                            android:max="50"
+                            android:progress="20"
+                            android:progressDrawable="@drawable/curved_progress_bar"
+                            />
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="5dp">
+
+                <LinearLayout
+                    android:layout_width="539px"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Vida"
+                        android:textSize="18dp"
+                        android:gravity="center_horizontal"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/progress_bar_background"
+                        >
+
+                        <ProgressBar
+                            android:id="@+id/pbVida"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:layout_margin="1dp"
+                            android:indeterminate="false"
+                            android:max="50"
+                            android:progress="20"
+                            android:progressTint="#B10000"
+                            android:progressDrawable="@drawable/curved_progress_bar"
+                            />
+
+                    </FrameLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
