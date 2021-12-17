@@ -18,4 +18,5 @@
     <color name="button_pressed">#C69760</color>
     <color name="button_checked">#E8D3B9</color>
 
+    <color name="transparent">#00FFFFFF</color>
 </resources>

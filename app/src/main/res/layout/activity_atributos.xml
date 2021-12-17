@@ -76,7 +76,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textSize="16dp">
+                android:textSize="16dp"
+                android:id="@+id/tvPontosAtuais">
 
             </TextView>
 
@@ -111,7 +112,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tvNível"
+                    android:id="@+id/tvNivel"
                     android:text="0"
                     android:gravity="center_horizontal"/>
             </LinearLayout>
@@ -444,6 +445,28 @@
 
         <!--Fim da Quinta Linha de Atributos-->
 
+        <!--Sexta Linha de Atributos-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:paddingVertical="4dp">
+
+            <Button
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:id="@+id/btnCorfirmar"
+                android:text="Confirmar"
+                />
+
+        </LinearLayout>
+
+        <!--Fim da Sexta Linha de Atributos-->
+
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -478,16 +501,28 @@
                     android:orientation="vertical">
 
 
-                    <ProgressBar
-                        android:id="@+id/pbForca"
-                        style="?android:attr/progressBarStyleHorizontal"
+                     <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:max="100"
-                        android:paddingHorizontal="20dp"
-                        android:progress="50"
-                        android:scaleY="2"
-                        />
+                        android:layout_height="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/progress_bar_background"
+                        >
+
+                        <ProgressBar
+                            android:id="@+id/pbForca"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:layout_margin="1dp"
+                            android:indeterminate="false"
+                            android:max="50"
+                            android:progress="20"
+                            android:progressDrawable="@drawable/curved_progress_bar"
+                            />
+
+                    </FrameLayout>
 
 
                 </LinearLayout>
@@ -523,15 +558,28 @@
 
 
 
-                    <ProgressBar
-                        android:id="@+id/pbConstituicao"
-                        style="?android:attr/progressBarStyleHorizontal"
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:max="100"
-                        android:paddingHorizontal="20dp"
-                        android:progress="20"
-                        android:scaleY="2"/>
+                        android:layout_height="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/progress_bar_background"
+                        >
+
+                        <ProgressBar
+                            android:id="@+id/pbConstituicao"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:layout_margin="1dp"
+                            android:indeterminate="false"
+                            android:max="50"
+                            android:progress="20"
+                            android:progressDrawable="@drawable/curved_progress_bar"
+                            />
+
+                    </FrameLayout>
 
                 </LinearLayout>
 
@@ -565,15 +613,28 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <ProgressBar
-                        android:id="@+id/pbInteligencia"
-                        style="?android:attr/progressBarStyleHorizontal"
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:max="100"
-                        android:paddingHorizontal="20dp"
-                        android:progress="10"
-                        android:scaleY="2"/>
+                        android:layout_height="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/progress_bar_background"
+                        >
+
+                        <ProgressBar
+                            android:id="@+id/pbInteligencia"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:layout_margin="1dp"
+                            android:indeterminate="false"
+                            android:max="50"
+                            android:progress="20"
+                            android:progressDrawable="@drawable/curved_progress_bar"
+                            />
+
+                    </FrameLayout>
 
                 </LinearLayout>
 
@@ -609,15 +670,28 @@
 
 
 
-                    <ProgressBar
-                        android:id="@+id/pbDestreza"
-                        style="?android:attr/progressBarStyleHorizontal"
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:max="100"
-                        android:paddingHorizontal="20dp"
-                        android:progress="70"
-                        android:scaleY="2"/>
+                        android:layout_height="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/progress_bar_background"
+                        >
+
+                        <ProgressBar
+                            android:id="@+id/pbDestreza"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:layout_margin="1dp"
+                            android:indeterminate="false"
+                            android:max="50"
+                            android:progress="20"
+                            android:progressDrawable="@drawable/curved_progress_bar"
+                            />
+
+                    </FrameLayout>
 
                 </LinearLayout>
 
@@ -652,15 +726,28 @@
 
 
 
-                    <ProgressBar
-                        android:id="@+id/pbSabedoria"
-                        style="?android:attr/progressBarStyleHorizontal"
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:max="100"
-                        android:paddingHorizontal="20dp"
-                        android:progress="60"
-                        android:scaleY="2"/>
+                        android:layout_height="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/progress_bar_background"
+                        >
+
+                        <ProgressBar
+                            android:id="@+id/pbSabedoria"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:layout_margin="1dp"
+                            android:indeterminate="false"
+                            android:max="50"
+                            android:progress="20"
+                            android:progressDrawable="@drawable/curved_progress_bar"
+                            />
+
+                    </FrameLayout>
 
                 </LinearLayout>
 
@@ -695,15 +782,28 @@
 
 
 
-                    <ProgressBar
-                        android:id="@+id/pbCarisma"
-                        style="?android:attr/progressBarStyleHorizontal"
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:max="100"
-                        android:paddingHorizontal="20dp"
-                        android:progress="5"
-                        android:scaleY="2"/>
+                        android:layout_height="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/progress_bar_background"
+                        >
+
+                        <ProgressBar
+                            android:id="@+id/pbCarisma"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:layout_margin="1dp"
+                            android:indeterminate="false"
+                            android:max="50"
+                            android:progress="20"
+                            android:progressDrawable="@drawable/curved_progress_bar"
+                            />
+
+                    </FrameLayout>
 
                 </LinearLayout>
 
@@ -738,16 +838,30 @@
 
 
 
-                    <ProgressBar
-                        android:id="@+id/pbVida"
-                        style="?android:attr/progressBarStyleHorizontal"
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:max="100"
-                        android:paddingHorizontal="20dp"
-                        android:progress="38"
-                        android:scaleY="2"
-                        android:progressTint="#B10000"/>
+                        android:layout_height="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/progress_bar_background"
+                        >
+
+                        <ProgressBar
+                            android:id="@+id/pbVida"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:layout_margin="1dp"
+                            android:indeterminate="false"
+                            android:max="50"
+                            android:progress="20"
+                            android:progressTint="#B10000"
+                            android:progressDrawable="@drawable/curved_progress_bar"
+                            />
+
+                    </FrameLayout>
+
 
                 </LinearLayout>
 

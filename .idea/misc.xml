@@ -3,10 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Acer/Documents/Projetos/RPGManager/app/src/main/res/drawable/curved_progress_bar.xml" value="0.4036458333333333" />
         <entry key="..\:/Users/Acer/Documents/Projetos/RPGManager/app/src/main/res/drawable/rounded_button.xml" value="0.4036458333333333" />
         <entry key="..\:/Users/Acer/Documents/Projetos/RPGManager/app/src/main/res/drawable/rounded_left_button.xml" value="0.4036458333333333" />
         <entry key="..\:/Users/Acer/Documents/Projetos/RPGManager/app/src/main/res/drawable/rounded_progressbar.xml" value="0.4036458333333333" />
-        <entry key="..\:/Users/Acer/Documents/Projetos/RPGManager/app/src/main/res/layout/activity_atributos.xml" value="0.33" />
+        <entry key="..\:/Users/Acer/Documents/Projetos/RPGManager/app/src/main/res/layout/activity_atributos.xml" value="0.5" />
         <entry key="..\:/Users/Acer/Documents/Projetos/RPGManager/app/src/main/res/layout/activity_main.xml" value="0.3875" />
         <entry key="..\:/Users/Acer/Documents/Projetos/RPGManager/app/src/main/res/layout/elemento_personagem_lista_mod.xml" value="0.3875" />
         <entry key="..\:/Users/Acer/Documents/Projetos/RPGManager/app/src/main/res/layout/fragment_item_lista.xml" value="0.3875" />
