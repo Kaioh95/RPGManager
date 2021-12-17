@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">RPG Manager</string>
+
+    <string-array name="classes_array">
+        <item>Bárbaro</item>
+        <item>Bardo</item>
+        <item>Bruxo</item>
+        <item>Clérigo</item>
+        <item>Druida</item>
+        <item>Feiticeiro</item>
+        <item>Guerreiro</item>
+        <item>Ladino</item>
+        <item>Mago</item>
+        <item>Monge</item>
+        <item>Paladino</item>
+        <item>Patrulheiro</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

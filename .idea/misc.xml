@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/kaioh/AndroidStudioProjects/RPGManager/app/src/main/res/drawable/left_rounded_button.xml" value="0.2203125" />
+        <entry key="..\:/Users/kaioh/AndroidStudioProjects/RPGManager/app/src/main/res/drawable/rounded_button.xml" value="0.2203125" />
+        <entry key="..\:/Users/kaioh/AndroidStudioProjects/RPGManager/app/src/main/res/drawable/rounded_left_button.xml" value="0.2203125" />
+        <entry key="..\:/Users/kaioh/AndroidStudioProjects/RPGManager/app/src/main/res/drawable/rounded_linear_layout.xml" value="0.10520833333333333" />
+        <entry key="..\:/Users/kaioh/AndroidStudioProjects/RPGManager/app/src/main/res/drawable/rounded_right_button.xml" value="0.2203125" />
+        <entry key="..\:/Users/kaioh/AndroidStudioProjects/RPGManager/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/kaioh/AndroidStudioProjects/RPGManager/app/src/main/res/layout/elemento_personagem_lista_mod.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/kaioh/AndroidStudioProjects/RPGManager/app/src/main/res/layout/fragment_filme_lista_mod.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/kaioh/AndroidStudioProjects/RPGManager/app/src/main/res/layout/fragment_item_lista.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/kaioh/AndroidStudioProjects/RPGManager/app/src/main/res/layout/fragment_personagem_lista_mod.xml" value="0.20416666666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
