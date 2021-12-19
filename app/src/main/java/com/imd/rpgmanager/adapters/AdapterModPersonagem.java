@@ -3,12 +3,14 @@ package com.imd.rpgmanager.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.imd.rpgmanager.R;
+import com.imd.rpgmanager.model.ClassesRPG;
 import com.imd.rpgmanager.model.Personagem;
 
 import java.util.List;
@@ -34,6 +36,9 @@ public class AdapterModPersonagem extends RecyclerView.Adapter<AdapterModPersona
 
         Personagem personagem = listaPersonagens.get(position);
 
+        ClassesRPG classeAtual = new ClassesRPG(personagem.getClasse());
+
+        holder.ivClasse.setImageResource(classeAtual.getImgPath());
         holder.tvNome.setText(personagem.getNome());
         holder.tvClasse.setText(personagem.getClasse());
 
@@ -46,12 +51,14 @@ public class AdapterModPersonagem extends RecyclerView.Adapter<AdapterModPersona
 
     public class MinhaViewHolder extends RecyclerView.ViewHolder{
 
+        ImageView ivClasse;
         TextView tvNome;
         TextView tvClasse;
 
         public MinhaViewHolder(View itemView){
             super(itemView);
 
+            ivClasse = itemView.findViewById(R.id.ivClasse);
             tvNome = itemView.findViewById(R.id.cvtvNomePersonagem);
             tvClasse = itemView.findViewById(R.id.cvtvClassePersonagem);
 
