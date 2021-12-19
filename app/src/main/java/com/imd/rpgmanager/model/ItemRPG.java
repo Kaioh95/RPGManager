@@ -27,6 +27,8 @@ public class ItemRPG {
 
     @Override
     public String toString() {
+        if(qtdItem>0)
+            return String.format("%sx %s", qtdItem, nome);
         return nome;
     }
 }

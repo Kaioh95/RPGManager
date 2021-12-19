@@ -5,13 +5,14 @@ import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
 import com.imd.rpgmanager.fragments.ItemListaFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private ItemListaFragment itemListaFragment;
     private FragmentManager fragmentManagerItens;
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
         splineClasses.setAdapter(adapter);
 
+        splineClasses.setOnItemSelectedListener(this);
+
         btnDescricao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
                 btnItens.setTextColor(getResources().getColor(R.color.text_disable));
 
                 mostrarDetalhesItensClasse(splineClasses.getSelectedItem().toString(), 0);
-
             }
         });
 
@@ -73,4 +75,19 @@ public class MainActivity extends AppCompatActivity {
         itemListaFragment.atualizar(classe, btnPrecionado);
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        btnDescricao.setBackground(getResources().getDrawable(R.drawable.rounded_button));
+        btnDescricao.setTextColor(getResources().getColor(R.color.text_hilite));
+
+        btnItens.setBackground(getResources().getDrawable(R.drawable.rounded_right_button));
+        btnItens.setTextColor(getResources().getColor(R.color.text_disable));
+
+        mostrarDetalhesItensClasse(parent.getItemAtPosition(position).toString(), 0);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }
