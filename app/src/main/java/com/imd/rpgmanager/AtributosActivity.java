@@ -3,6 +3,8 @@ package com.imd.rpgmanager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.ObjectAnimator;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -74,8 +76,8 @@ public class AtributosActivity extends AppCompatActivity {
 
     int PONTOS_POR_NIVEL = 5;
     int NIVEL_MAX = 50;
-    int PONTOS_MAX = 100;
-    int ponto_atuais = 0;
+    int PONTOS_MAX = 0; //baseado no nível do personagem quando upa
+    //int ponto_atuais = 0;
 
     Personagem personagem;
 
@@ -84,9 +86,11 @@ public class AtributosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_atributos);
 
+        getSupportActionBar().hide();
+
         Intent it = getIntent();
         personagem = (Personagem) it.getExtras().getSerializable("personagem");
-        System.out.println(personagem.getNome() + personagem.getNivel());
+        System.out.println("Teste Teste Teste Teste Teste " + personagem.getNome() + personagem.getNivel());
 
         btnMaisNivel = findViewById(R.id.btnMaisNivel);
 
@@ -134,6 +138,8 @@ public class AtributosActivity extends AppCompatActivity {
         pbCarisma = findViewById(R.id.pbCarisma);
         pbVida = findViewById(R.id.pbVida);
 
+
+
         tvNivel.setText(String.valueOf(personagem.getNivel()));
         tvForca.setText(String.valueOf(personagem.getForca()));
         tvConstituicao.setText(String.valueOf(personagem.getConstituicao()));
@@ -142,6 +148,8 @@ public class AtributosActivity extends AppCompatActivity {
         tvSabedoria.setText(String.valueOf(personagem.getSabedoria()));
         tvCarisma.setText(String.valueOf(personagem.getCarisma()));
         tvVida.setText(String.valueOf(personagem.getVida()));
+
+        VidaMax = personagem.getConstituicao() * 2;//cálculo de vida máxima
 
         tvPontosAtuais.setText("0");
 
@@ -153,7 +161,7 @@ public class AtributosActivity extends AppCompatActivity {
                 if(Integer.parseInt(tvNivel.getText().toString()) <= NIVEL_MAX) {
                     tvNivel.setText(String.valueOf(Integer.parseInt(String.valueOf(tvNivel.getText())) + 1));
                     tvPontosAtuais.setText(String.valueOf(PONTOS_POR_NIVEL + Integer.parseInt(String.valueOf(tvPontosAtuais.getText()))));
-                    ponto_atuais = Integer.parseInt(tvPontosAtuais.getText().toString());
+                    PONTOS_MAX += PONTOS_POR_NIVEL;
                 }
             }
         });
@@ -163,7 +171,7 @@ public class AtributosActivity extends AppCompatActivity {
         btnMenosForca.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ponto_atuais < PONTOS_MAX){
+                if(Integer.parseInt(String.valueOf(tvPontosAtuais.getText())) < PONTOS_MAX && Integer.parseInt(String.valueOf(tvForca.getText())) > personagem.getForca()){
                     tvForca.setText(String.valueOf(Integer.parseInt(String.valueOf(tvForca.getText()))-1));
                     tvPontosAtuais.setText(String.valueOf(Integer.parseInt(String.valueOf(tvPontosAtuais.getText()))+1));
                 }
@@ -172,7 +180,7 @@ public class AtributosActivity extends AppCompatActivity {
         btnMaisForca.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ponto_atuais > 0){
+                if (Integer.parseInt(String.valueOf(tvPontosAtuais.getText())) > 0){
                     tvForca.setText(String.valueOf(Integer.parseInt(String.valueOf(tvForca.getText())) + 1));
                     tvPontosAtuais.setText(String.valueOf(Integer.parseInt(String.valueOf(tvPontosAtuais.getText()))-1));
                 }else{
@@ -185,7 +193,7 @@ public class AtributosActivity extends AppCompatActivity {
         btnMenosConstituicao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ponto_atuais < PONTOS_MAX){
+                if(Integer.parseInt(String.valueOf(tvPontosAtuais.getText())) < PONTOS_MAX && Integer.parseInt(String.valueOf(tvConstituicao.getText())) > personagem.getConstituicao()){
                     tvConstituicao.setText(String.valueOf(Integer.parseInt(String.valueOf(tvConstituicao.getText()))-1));
                     tvPontosAtuais.setText(String.valueOf(Integer.parseInt(String.valueOf(tvPontosAtuais.getText()))+1));
                 }
@@ -194,7 +202,7 @@ public class AtributosActivity extends AppCompatActivity {
         btnMaisConstituicao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ponto_atuais > 0){
+                if (Integer.parseInt(String.valueOf(tvPontosAtuais.getText())) > 0){
                     tvConstituicao.setText(String.valueOf(Integer.parseInt(String.valueOf(tvConstituicao.getText())) + 1));
                     tvPontosAtuais.setText(String.valueOf(Integer.parseInt(String.valueOf(tvPontosAtuais.getText()))-1));
                 }else{
@@ -207,7 +215,7 @@ public class AtributosActivity extends AppCompatActivity {
         btnMenosInteligencia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ponto_atuais < PONTOS_MAX){
+                if(Integer.parseInt(String.valueOf(tvPontosAtuais.getText())) < PONTOS_MAX && Integer.parseInt(String.valueOf(tvInteligencia.getText())) > personagem.getInteligencia()){
                     tvInteligencia.setText(String.valueOf(Integer.parseInt(String.valueOf(tvInteligencia.getText()))-1));
                     tvPontosAtuais.setText(String.valueOf(Integer.parseInt(String.valueOf(tvPontosAtuais.getText()))+1));
                 }
@@ -216,7 +224,7 @@ public class AtributosActivity extends AppCompatActivity {
         btnMaisInteligencia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ponto_atuais > 0){
+                if (Integer.parseInt(String.valueOf(tvPontosAtuais.getText())) > 0){
                     tvInteligencia.setText(String.valueOf(Integer.parseInt(String.valueOf(tvInteligencia.getText())) + 1));
                     tvPontosAtuais.setText(String.valueOf(Integer.parseInt(String.valueOf(tvPontosAtuais.getText()))-1));
                 }else{
@@ -229,7 +237,7 @@ public class AtributosActivity extends AppCompatActivity {
         btnMenosDestreza.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ponto_atuais < PONTOS_MAX){
+                if(Integer.parseInt(String.valueOf(tvPontosAtuais.getText())) < PONTOS_MAX && Integer.parseInt(String.valueOf(tvDestreza.getText())) > personagem.getDestreza()){
                     tvDestreza.setText(String.valueOf(Integer.parseInt(String.valueOf(tvDestreza.getText()))-1));
                     tvPontosAtuais.setText(String.valueOf(Integer.parseInt(String.valueOf(tvPontosAtuais.getText()))+1));
                 }
@@ -238,7 +246,7 @@ public class AtributosActivity extends AppCompatActivity {
         btnMaisDestreza.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ponto_atuais > 0){
+                if (Integer.parseInt(String.valueOf(tvPontosAtuais.getText())) > 0){
                     tvDestreza.setText(String.valueOf(Integer.parseInt(String.valueOf(tvDestreza.getText())) + 1));
                     tvPontosAtuais.setText(String.valueOf(Integer.parseInt(String.valueOf(tvPontosAtuais.getText()))-1));
                 }else{
@@ -251,7 +259,7 @@ public class AtributosActivity extends AppCompatActivity {
         btnMenosSabedoria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ponto_atuais < PONTOS_MAX){
+                if(Integer.parseInt(String.valueOf(tvPontosAtuais.getText())) < PONTOS_MAX && Integer.parseInt(String.valueOf(tvSabedoria.getText())) > personagem.getSabedoria()){
                     tvSabedoria.setText(String.valueOf(Integer.parseInt(String.valueOf(tvSabedoria.getText()))-1));
                     tvPontosAtuais.setText(String.valueOf(Integer.parseInt(String.valueOf(tvPontosAtuais.getText()))+1));
                 }
@@ -260,7 +268,7 @@ public class AtributosActivity extends AppCompatActivity {
         btnMaisSabedoria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ponto_atuais > 0){
+                if (Integer.parseInt(String.valueOf(tvPontosAtuais.getText())) > 0){
                     tvSabedoria.setText(String.valueOf(Integer.parseInt(String.valueOf(tvSabedoria.getText())) + 1));
                     tvPontosAtuais.setText(String.valueOf(Integer.parseInt(String.valueOf(tvPontosAtuais.getText()))-1));
                 }else{
@@ -273,7 +281,7 @@ public class AtributosActivity extends AppCompatActivity {
         btnMenosCarisma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ponto_atuais < PONTOS_MAX){
+                if(Integer.parseInt(String.valueOf(tvPontosAtuais.getText())) < PONTOS_MAX && Integer.parseInt(String.valueOf(tvCarisma.getText())) > personagem.getCarisma()){
                     tvCarisma.setText(String.valueOf(Integer.parseInt(String.valueOf(tvCarisma.getText()))-1));
                     tvPontosAtuais.setText(String.valueOf(Integer.parseInt(String.valueOf(tvPontosAtuais.getText()))+1));
                 }
@@ -282,7 +290,7 @@ public class AtributosActivity extends AppCompatActivity {
         btnMaisCarisma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ponto_atuais > 0){
+                if (Integer.parseInt(String.valueOf(tvPontosAtuais.getText())) > 0){
                     tvCarisma.setText(String.valueOf(Integer.parseInt(String.valueOf(tvCarisma.getText())) + 1));
                     tvPontosAtuais.setText(String.valueOf(Integer.parseInt(String.valueOf(tvPontosAtuais.getText()))-1));
                 }else{
@@ -315,18 +323,35 @@ public class AtributosActivity extends AppCompatActivity {
         btnResetar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvPontosAtuais.setText(0);
-                tvNivel.setText(0);
-                tvForca.setText(0);
-                tvConstituicao.setText(0);
-                tvInteligencia.setText(0);
-                tvDestreza.setText(0);
-                tvSabedoria.setText(0);
-                tvCarisma.setText(0);
-                tvVida.setText(0);
-                VidaMax = 0;
-                PONTOS_MAX = 0;
-                atualizarProgressBars();
+                if (Integer.parseInt(String.valueOf(tvNivel.getText())) == 0) {
+                    Toast.makeText(getApplicationContext(), "Nada para resetar", Toast.LENGTH_SHORT).show();
+                } else {
+                    new AlertDialog.Builder(AtributosActivity.this)
+                            .setTitle("Resetar")
+                            .setMessage("Isso irá resetar seu nível e todos os seus pontos distribuídos")
+                            .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // continue with delete
+                                    tvPontosAtuais.setText("0");
+                                    tvNivel.setText("0");
+                                    tvForca.setText("0");
+                                    tvConstituicao.setText("0");
+                                    tvInteligencia.setText("0");
+                                    tvDestreza.setText("0");
+                                    tvSabedoria.setText("0");
+                                    tvCarisma.setText("0");
+                                    tvVida.setText("0");
+                                    VidaMax = 0;
+                                    PONTOS_MAX = 0;
+                                    atualizarProgressBars();
+                                }
+                            }).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // do nothing
+                        }
+                    }).setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }
             }
         });
 
@@ -345,7 +370,9 @@ public class AtributosActivity extends AppCompatActivity {
                     personagem.setCarisma(Integer.parseInt((String) tvCarisma.getText()));
                     personagem.setVida(Integer.parseInt((String) tvVida.getText()));
                     PONTOS_MAX = 0;
+                    VidaMax = personagem.getConstituicao() * 2;
                     atualizarProgressBars();
+                    Toast.makeText(getApplicationContext(), "Informações Salvas", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -358,10 +385,11 @@ public class AtributosActivity extends AppCompatActivity {
         pbDestreza.setProgress(Integer.parseInt(String.valueOf(tvDestreza.getText())));
         pbSabedoria.setProgress(Integer.parseInt(String.valueOf(tvSabedoria.getText())));
         pbCarisma.setProgress(Integer.parseInt(String.valueOf(tvCarisma.getText())));
+        pbVida.setMax(personagem.getConstituicao() * 2);//cálculo de vida máxima
         pbVida.setProgress(Integer.parseInt(String.valueOf(tvVida.getText())));
 
-        //Realizar o calculo de vida dentro da função seguinte
-        //pbVida.setMax();
+
+
     }
 
 

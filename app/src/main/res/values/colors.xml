@@ -19,4 +19,5 @@
     <color name="button_checked">#E8D3B9</color>
 
     <color name="transparent">#00FFFFFF</color>
+    <color name="progress_bar">#ECE7E4</color>
 </resources>
