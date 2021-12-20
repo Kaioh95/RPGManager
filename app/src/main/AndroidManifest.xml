@@ -10,6 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RPGManager">
         <activity
+            android:name=".AtributosActivity"
+            android:parentActivityName=".MainActivity"
+            android:exported="true">
+            <meta-data
+                android:name="Atributos"
+                android:value=".MainActivity"/>
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

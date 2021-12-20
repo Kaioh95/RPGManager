@@ -1,14 +1,15 @@
 package com.imd.rpgmanager.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Personagem {
+public class Personagem implements Serializable {
     private String nome;
     private int idade;
     private String sexo;
     private String classe;
     private String raca;
-    private List<ItemRPG> itens;
+    private transient List<ItemRPG> itens;
 
     private int Nivel = 0;
     private int Forca = 0;

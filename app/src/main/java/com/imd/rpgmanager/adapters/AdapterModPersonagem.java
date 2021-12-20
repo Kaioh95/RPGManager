@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.imd.rpgmanager.R;
@@ -18,6 +19,13 @@ import java.util.List;
 public class AdapterModPersonagem extends RecyclerView.Adapter<AdapterModPersonagem.MinhaViewHolder> {
 
     private List<Personagem> listaPersonagens;
+
+    public interface AoClicarNoPersonagem{
+        void clicouNoPersonagem(int position);
+    }
+
+    public AoClicarNoPersonagem listenerP;
+
     public AdapterModPersonagem(List<Personagem> lista){
         this.listaPersonagens = lista;
     }
@@ -49,11 +57,12 @@ public class AdapterModPersonagem extends RecyclerView.Adapter<AdapterModPersona
         return listaPersonagens.size();
     }
 
-    public class MinhaViewHolder extends RecyclerView.ViewHolder{
+    public class MinhaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         ImageView ivClasse;
         TextView tvNome;
         TextView tvClasse;
+        CardView cvPersonagem;
 
         public MinhaViewHolder(View itemView){
             super(itemView);
@@ -62,7 +71,19 @@ public class AdapterModPersonagem extends RecyclerView.Adapter<AdapterModPersona
             tvNome = itemView.findViewById(R.id.cvtvNomePersonagem);
             tvClasse = itemView.findViewById(R.id.cvtvClassePersonagem);
 
+            cvPersonagem = itemView.findViewById(R.id.cvPersonagem);
+            cvPersonagem.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            listenerP.clicouNoPersonagem(getLayoutPosition());
         }
 
     }
+
+    public void implementaAoClicarNoPersonagem(AoClicarNoPersonagem listener){
+        this.listenerP = listener;
+    }
+
 }

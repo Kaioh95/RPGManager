@@ -2,17 +2,24 @@ package com.imd.rpgmanager;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.SearchView;
 import android.widget.Spinner;
 
+import com.imd.rpgmanager.fragments.InfoDialogFragment;
 import com.imd.rpgmanager.fragments.ItemListaFragment;
 import com.imd.rpgmanager.fragments.PersonagemDialogFragment;
 import com.imd.rpgmanager.fragments.PersonagensListaModFragment;
@@ -20,7 +27,11 @@ import com.imd.rpgmanager.model.Personagem;
 
 public class MainActivity extends AppCompatActivity
         implements AdapterView.OnItemSelectedListener,
-        PersonagemDialogFragment.AoSalvarPersonagem {
+        PersonagemDialogFragment.AoSalvarPersonagem,
+        SearchView.OnQueryTextListener,
+        MenuItemCompat.OnActionExpandListener,
+        InfoDialogFragment.AoClicarEmInfo,
+        PersonagensListaModFragment.AoClicarEmPersonagemMod {
 
     private PersonagensListaModFragment personagensListaModFragment;
     private FragmentManager mFragmentManager;
@@ -109,6 +120,15 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.acao_pesquisar);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setOnQueryTextListener(this);
+
+        searchView.setQueryHint("Nome do Person...");
+
+        MenuItemCompat.setOnActionExpandListener(searchItem, this);
+
         return true;
     }
 
@@ -121,6 +141,10 @@ public class MainActivity extends AppCompatActivity
                         PersonagemDialogFragment.novaInstancia();
                 personagemDialogFragment.show(mFragmentManager, PersonagemDialogFragment.DIALOG_TAG);
                 break;
+            case R.id.acao_info:
+                InfoDialogFragment infoDialogFragment = new InfoDialogFragment();
+                infoDialogFragment.show(mFragmentManager, "INFO");
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -128,5 +152,41 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void salvouPersonagem(Personagem personagem) {
         personagensListaModFragment.adicionar(personagem);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        personagensListaModFragment.buscar(newText);
+        return false;
+    }
+
+    @Override
+    public boolean onMenuItemActionExpand(MenuItem item) {
+        return true;
+    }
+
+    @Override
+    public boolean onMenuItemActionCollapse(MenuItem item) {
+        return true;
+    }
+
+    @Override
+    public void aoClicar(int botao) {
+        if(botao == DialogInterface.BUTTON_POSITIVE){
+            Intent it = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Kaioh95/RPGManager") );
+            startActivity(it);
+        }
+    }
+
+    @Override
+    public void ciclouEmPersonagemMod(Personagem personagem) {
+        Intent it = new Intent(this, AtributosActivity.class);
+        it.putExtra("personagem", personagem);
+        startActivity(it);
     }
 }

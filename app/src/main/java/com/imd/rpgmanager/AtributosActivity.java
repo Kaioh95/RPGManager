@@ -3,6 +3,7 @@ package com.imd.rpgmanager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
@@ -72,7 +73,8 @@ public class AtributosActivity extends AppCompatActivity {
     int VidaMax = 0;
 
     int PONTOS_POR_NIVEL = 5;
-    int PONTOS_MAX = 0;
+    int NIVEL_MAX = 50;
+    int PONTOS_MAX = 100;
     int ponto_atuais = 0;
 
     Personagem personagem;
@@ -81,6 +83,10 @@ public class AtributosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_atributos);
+
+        Intent it = getIntent();
+        personagem = (Personagem) it.getExtras().getSerializable("personagem");
+        System.out.println(personagem.getNome() + personagem.getNivel());
 
         btnMaisNivel = findViewById(R.id.btnMaisNivel);
 
@@ -128,16 +134,14 @@ public class AtributosActivity extends AppCompatActivity {
         pbCarisma = findViewById(R.id.pbCarisma);
         pbVida = findViewById(R.id.pbVida);
 
-        personagem = new Personagem();
-
-        tvNivel.setText(personagem.getNivel());
-        tvForca.setText(personagem.getForca());
-        tvConstituicao.setText(personagem.getConstituicao());
-        tvInteligencia.setText(personagem.getInteligencia());
-        tvDestreza.setText(personagem.getDestreza());
-        tvSabedoria.setText(personagem.getSabedoria());
-        tvCarisma.setText(personagem.getCarisma());
-        tvVida.setText(personagem.getVida());
+        tvNivel.setText(String.valueOf(personagem.getNivel()));
+        tvForca.setText(String.valueOf(personagem.getForca()));
+        tvConstituicao.setText(String.valueOf(personagem.getConstituicao()));
+        tvInteligencia.setText(String.valueOf(personagem.getInteligencia()));
+        tvDestreza.setText(String.valueOf(personagem.getDestreza()));
+        tvSabedoria.setText(String.valueOf(personagem.getSabedoria()));
+        tvCarisma.setText(String.valueOf(personagem.getCarisma()));
+        tvVida.setText(String.valueOf(personagem.getVida()));
 
         tvPontosAtuais.setText("0");
 
@@ -146,9 +150,11 @@ public class AtributosActivity extends AppCompatActivity {
         btnMaisNivel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvNivel.setText(String.valueOf(Integer.parseInt(String.valueOf(tvNivel.getText())) + 1));
-                tvPontosAtuais.setText(String.valueOf(PONTOS_POR_NIVEL + Integer.parseInt(String.valueOf(tvPontosAtuais.getText()))));
-                PONTOS_MAX += PONTOS_POR_NIVEL;
+                if(Integer.parseInt(tvNivel.getText().toString()) <= NIVEL_MAX) {
+                    tvNivel.setText(String.valueOf(Integer.parseInt(String.valueOf(tvNivel.getText())) + 1));
+                    tvPontosAtuais.setText(String.valueOf(PONTOS_POR_NIVEL + Integer.parseInt(String.valueOf(tvPontosAtuais.getText()))));
+                    ponto_atuais = Integer.parseInt(tvPontosAtuais.getText().toString());
+                }
             }
         });
 
