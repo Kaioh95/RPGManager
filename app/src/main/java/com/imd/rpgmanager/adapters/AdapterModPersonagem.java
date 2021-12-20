@@ -46,7 +46,7 @@ public class AdapterModPersonagem extends RecyclerView.Adapter<AdapterModPersona
 
     @Override
     public int getItemCount() {
-        return 3;
+        return listaPersonagens.size();
     }
 
     public class MinhaViewHolder extends RecyclerView.ViewHolder{

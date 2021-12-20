@@ -5,7 +5,9 @@ import java.util.List;
 public class Personagem {
     private String nome;
     private int idade;
+    private String sexo;
     private String classe;
+    private String raca;
     private List<ItemRPG> itens;
 
     private int Nivel = 0;
@@ -19,10 +21,12 @@ public class Personagem {
 
     public Personagem(){ }
 
-    public Personagem(String nome, int idade, String classe, List<ItemRPG> itens) {
+    public Personagem(String nome, int idade, String sexo,String classe, String raca, List<ItemRPG> itens) {
         this.nome = nome;
         this.idade = idade;
+        this.sexo = sexo;
         this.classe = classe;
+        this.raca = raca;
         this.itens = itens;
     }
 
@@ -42,12 +46,28 @@ public class Personagem {
         this.idade = idade;
     }
 
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
     public String getClasse() {
         return classe;
     }
 
     public void setClasse(String classe) {
         this.classe = classe;
+    }
+
+    public String getRaca() {
+        return raca;
+    }
+
+    public void setRaca(String raca) {
+        this.raca = raca;
     }
 
     public List<ItemRPG> getItens() {

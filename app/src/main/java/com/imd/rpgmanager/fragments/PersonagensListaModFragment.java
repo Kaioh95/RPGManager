@@ -54,10 +54,10 @@ public class PersonagensListaModFragment extends Fragment {
     }
 
     //Interface faz a comunicação entre FRAGMENTO (Personagem lista mod)
-    // e Actividade (MainActivity)
+    /* e Actividade (MainActivity)
     public interface AoClicarNoPersonagemMod{
         public void clicouNoPersonagemMod(Personagem personagem);
-    }
+    }*/
 
 
     private List<Personagem> carregaPersonagens(){
@@ -67,10 +67,10 @@ public class PersonagensListaModFragment extends Fragment {
         itens.add(new ItemRPG("Claymore", 99));
         itens.add(new ItemRPG("Mirror Shield", 99));
 
-        personagens.add(new Personagem("The Abyss Walker",500,"Paladino", itens));
-        personagens.add(new Personagem("The Executor",37,"Ladino", itens));
-        personagens.add(new Personagem("Dragon Slayer",34,"Guerreiro",itens));
-        personagens.add(new Personagem("Chosen One",1,"Mago",itens));
+        personagens.add(new Personagem("The Abyss Walker",500, "Indefinido","Paladino", "Draconato",itens));
+        personagens.add(new Personagem("The Executor",37, "Indefinido","Ladino", "Draconato", itens));
+        personagens.add(new Personagem("Dragon Slayer",34,"Indefinido", "Guerreiro","Draconato", itens));
+        personagens.add(new Personagem("Chosen One",1,"", "Mago","Humano", itens));
 
         return personagens;
     }

@@ -1,9 +1,12 @@
 package com.imd.rpgmanager;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,11 +14,19 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import com.imd.rpgmanager.fragments.ItemListaFragment;
+import com.imd.rpgmanager.fragments.PersonagemDialogFragment;
+import com.imd.rpgmanager.fragments.PersonagensListaModFragment;
+import com.imd.rpgmanager.model.Personagem;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity
+        implements AdapterView.OnItemSelectedListener,
+        PersonagemDialogFragment.AoSalvarPersonagem {
+
+    private PersonagensListaModFragment personagensListaModFragment;
+    private FragmentManager mFragmentManager;
 
     private ItemListaFragment itemListaFragment;
-    private FragmentManager fragmentManagerItens;
+    //private FragmentManager fragmentManagerItens;
 
     Spinner splineClasses;
     Button btnDescricao;
@@ -26,8 +37,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fragmentManagerItens = getSupportFragmentManager();
-        itemListaFragment = (ItemListaFragment) fragmentManagerItens
+        mFragmentManager = getSupportFragmentManager();
+        personagensListaModFragment = (PersonagensListaModFragment)
+                mFragmentManager.findFragmentById(R.id.fragmentPersonagemListaMod);
+
+        //mFragmentManager = getSupportFragmentManager();
+        itemListaFragment = (ItemListaFragment) mFragmentManager
                 .findFragmentById(R.id.fragmentListaItens);
 
         // Configurando Spinner
@@ -89,5 +104,29 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.acao_add_personagem:
+                PersonagemDialogFragment personagemDialogFragment =
+                        PersonagemDialogFragment.novaInstancia();
+                personagemDialogFragment.show(mFragmentManager, PersonagemDialogFragment.DIALOG_TAG);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void salvouPersonagem(Personagem personagem) {
+        personagensListaModFragment.adicionar(personagem);
     }
 }
