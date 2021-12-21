@@ -113,50 +113,50 @@ public class PersonagemDialogFragment extends DialogFragment
             mPersonagem.setRaca(spnRaca.getSelectedItem().toString());
 
             mPersonagem.setNivel(1);
-            mPersonagem.setForca(15);
-            mPersonagem.setConstituicao(14);
-            mPersonagem.setInteligencia(13);
-            mPersonagem.setDestreza(12);
-            mPersonagem.setSabedoria(10);
+            mPersonagem.setForca(8);
+            mPersonagem.setConstituicao(8);
+            mPersonagem.setInteligencia(8);
+            mPersonagem.setDestreza(8);
+            mPersonagem.setSabedoria(8);
             mPersonagem.setCarisma(8);
 
             switch (spnRaca.getSelectedItem().toString()){
                 case "Anão":
-                    mPersonagem.setConstituicao(14+2);
+                    mPersonagem.setConstituicao(8+2);
                     break;
                 case "Elfo":
-                    mPersonagem.setDestreza(12+2);
+                    mPersonagem.setDestreza(8+2);
                     break;
                 case "Halfing":
-                    mPersonagem.setDestreza(12+2);
+                    mPersonagem.setDestreza(8+2);
                     break;
                 case "Humano":
-                    mPersonagem.setForca(15+1);
-                    mPersonagem.setConstituicao(14+1);
-                    mPersonagem.setInteligencia(13+1);
-                    mPersonagem.setDestreza(12+1);
-                    mPersonagem.setSabedoria(10+1);
+                    mPersonagem.setForca(8+1);
+                    mPersonagem.setConstituicao(8+1);
+                    mPersonagem.setInteligencia(8+1);
+                    mPersonagem.setDestreza(8+1);
+                    mPersonagem.setSabedoria(8+1);
                     mPersonagem.setCarisma(8+1);
                     break;
                 case "Draconato":
                     mPersonagem.setCarisma(8+1);
-                    mPersonagem.setForca(15+1);
+                    mPersonagem.setForca(8+1);
                     break;
                 case "Gnomo":
-                    mPersonagem.setInteligencia(13+2);
+                    mPersonagem.setInteligencia(8+2);
                     break;
                 case "Meio-elfo":
                     mPersonagem.setCarisma(8+2);
-                    mPersonagem.setDestreza(12+1);
-                    mPersonagem.setInteligencia(13+1);
+                    mPersonagem.setDestreza(8+1);
+                    mPersonagem.setInteligencia(8+1);
                     break;
                 case "Meio-orc":
                     mPersonagem.setCarisma(8+2);
-                    mPersonagem.setDestreza(12+1);
-                    mPersonagem.setForca(15+1);
+                    mPersonagem.setDestreza(8+1);
+                    mPersonagem.setForca(8+1);
                     break;
                 case "Tiefling":
-                    mPersonagem.setInteligencia(15+1);
+                    mPersonagem.setInteligencia(8+1);
                     mPersonagem.setCarisma(8+2);
                     break;
                 default:
