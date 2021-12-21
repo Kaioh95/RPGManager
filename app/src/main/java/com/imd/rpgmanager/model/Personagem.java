@@ -11,7 +11,7 @@ public class Personagem implements Serializable {
     private String raca;
     private transient List<ItemRPG> itens;
 
-    private int Nivel = 0;
+    private int Nivel = 1;
     private int Forca = 0;
     private int Constituicao = 0;
     private int Inteligencia = 0;
