@@ -488,6 +488,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Força"
+                        android:id="@+id/tvForcapb"
                         android:textSize="18dp"
                         android:gravity="center_horizontal"
                         />
@@ -544,6 +545,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Constituiçao"
+                        android:id="@+id/tvConstituicaopb"
                         android:textSize="18dp"
                         android:gravity="center_horizontal"
                         />
@@ -601,6 +603,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Inteligência"
+                        android:id="@+id/tvInteligenciapb"
                         android:textSize="18dp"
                         android:gravity="center_horizontal"
                         />
@@ -656,6 +659,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Destreza"
+                        android:id="@+id/tvDestrezapb"
                         android:textSize="18dp"
                         android:gravity="center_horizontal"
                         />
@@ -712,6 +716,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Sabedoria"
+                        android:id="@+id/tvSabedoriapb"
                         android:textSize="18dp"
                         android:gravity="center_horizontal"
                         />
@@ -768,6 +773,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Carisma"
+                        android:id="@+id/tvCarismapb"
                         android:textSize="18dp"
                         android:gravity="center_horizontal"
                         />
@@ -824,6 +830,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Vida"
+                        android:id="@+id/tvVidapb"
                         android:textSize="18dp"
                         android:gravity="center_horizontal"
                         />
@@ -860,7 +867,6 @@
                             />
 
                     </FrameLayout>
-
 
                 </LinearLayout>
 
