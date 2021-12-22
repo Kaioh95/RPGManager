@@ -120,51 +120,8 @@ public class PersonagemDialogFragment extends DialogFragment
             mPersonagem.setSabedoria(8);
             mPersonagem.setCarisma(8);
 
-            switch (spnRaca.getSelectedItem().toString()){
-                case "Anão":
-                    mPersonagem.setConstituicao(8+2);
-                    break;
-                case "Elfo":
-                    mPersonagem.setDestreza(8+2);
-                    break;
-                case "Halfing":
-                    mPersonagem.setDestreza(8+2);
-                    break;
-                case "Humano":
-                    mPersonagem.setForca(8+1);
-                    mPersonagem.setConstituicao(8+1);
-                    mPersonagem.setInteligencia(8+1);
-                    mPersonagem.setDestreza(8+1);
-                    mPersonagem.setSabedoria(8+1);
-                    mPersonagem.setCarisma(8+1);
-                    break;
-                case "Draconato":
-                    mPersonagem.setCarisma(8+1);
-                    mPersonagem.setForca(8+1);
-                    break;
-                case "Gnomo":
-                    mPersonagem.setInteligencia(8+2);
-                    break;
-                case "Meio-elfo":
-                    mPersonagem.setCarisma(8+2);
-                    mPersonagem.setDestreza(8+1);
-                    mPersonagem.setInteligencia(8+1);
-                    break;
-                case "Meio-orc":
-                    mPersonagem.setCarisma(8+2);
-                    mPersonagem.setDestreza(8+1);
-                    mPersonagem.setForca(8+1);
-                    break;
-                case "Tiefling":
-                    mPersonagem.setInteligencia(8+1);
-                    mPersonagem.setCarisma(8+2);
-                    break;
-                default:
-                    throw new IllegalArgumentException("Raça Inválida!");
-            }
-
             int bonusVida = new Random().nextInt(7)+1;
-            mPersonagem.setVida(14 + bonusVida);
+            mPersonagem.setVida(8 + bonusVida);
 
         }
 

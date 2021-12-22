@@ -57,6 +57,16 @@ public class AtributosActivity extends AppCompatActivity {
     TextView tvCarisma;
     TextView tvVida;
 
+    TextView tvPontosAtuaispb;
+    TextView tvNivelpb;
+    TextView tvForcapb;
+    TextView tvConstituicaopb;
+    TextView tvInteligenciapb;
+    TextView tvDestrezapb;
+    TextView tvSabedoriapb;
+    TextView tvCarismapb;
+    TextView tvVidapb;
+
     ProgressBar pbForca;
     ProgressBar pbConstituicao;
     ProgressBar pbInteligencia;
@@ -66,20 +76,22 @@ public class AtributosActivity extends AppCompatActivity {
     ProgressBar pbVida;
 
     int Nivel = 0;
-    int Forca = 0;
-    int Constituicao = 0;
-    int Inteligencia = 0;
-    int Destreza = 0;
-    int Sabedoria = 0;
-    int Carisma = 0;
-    int Vida = 0;
+    int bonusForca = 0;
+    int bonusConstituicao = 0;
+    int bonusInteligencia = 0;
+    int bonusDestreza = 0;
+    int bonusSabedoria = 0;
+    int bonusCarisma = 0;
+    int bonusVida = 0;
 
+    int bonusConstituicaoVida = 0;
+
+    int VidaAtual = 0;
     int VidaMax = 0;
 
     int PONTOS_POR_NIVEL = 5;
     int NIVEL_MAX = 20;
     int PONTOS_MAX = 0; //baseado no nível do personagem quando upa
-    int bonusVida = 0;
     //int ponto_atuais = 0;
 
     Personagem personagem;
@@ -132,6 +144,16 @@ public class AtributosActivity extends AppCompatActivity {
         tvCarisma = findViewById(R.id.tvCarisma);
         tvVida = findViewById(R.id.tvVida);
 
+        tvPontosAtuais = findViewById(R.id.tvPontosAtuais);
+        tvNivel = findViewById(R.id.tvNivel);
+        tvForcapb = findViewById(R.id.tvForcapb);
+        tvConstituicaopb = findViewById(R.id.tvConstituicaopb);
+        tvInteligenciapb = findViewById(R.id.tvInteligenciapb);
+        tvDestrezapb = findViewById(R.id.tvDestrezapb);
+        tvSabedoriapb = findViewById(R.id.tvSabedoriapb);
+        tvCarismapb = findViewById(R.id.tvCarismapb);
+        tvVidapb = findViewById(R.id.tvVidapb);
+
         //Barras de atributos
         pbForca = findViewById(R.id.pbForca);
         pbConstituicao = findViewById(R.id.pbConstituicao);
@@ -150,13 +172,18 @@ public class AtributosActivity extends AppCompatActivity {
         tvSabedoria.setText(String.valueOf(personagem.getSabedoria()));
         tvCarisma.setText(String.valueOf(personagem.getCarisma()));
 
-        tvVida.setText(String.valueOf(Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2)) + Integer.parseInt(String.valueOf(tvVida.getText()))));
+        System.out.println("Forca Forca Forca Forca Forca "+ (personagem.getForca()));
+
+        tvVida.setText(String.valueOf(Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2)) + personagem.getVida()));
 
         VidaMax = Integer.parseInt(String.valueOf(tvVida.getText()));//cálculo de vida máxima
-
+        VidaAtual = VidaMax;
         //Pontos iniciais
         tvPontosAtuais.setText("20");
 
+        //Calcular bonus apenas para o textView ao lado do gráfico
+
+        mostrarBonus();
         atualizarProgressBars();
 
         btnMaisNivel.setOnClickListener(new View.OnClickListener() {
@@ -166,7 +193,7 @@ public class AtributosActivity extends AppCompatActivity {
                     tvNivel.setText(String.valueOf(Integer.parseInt(String.valueOf(tvNivel.getText())) + 1));
                     tvPontosAtuais.setText(String.valueOf(PONTOS_POR_NIVEL + Integer.parseInt(String.valueOf(tvPontosAtuais.getText()))));
                     PONTOS_MAX += PONTOS_POR_NIVEL;
-                    bonusVida = new Random().nextInt(7)+1;
+                    bonusVida += new Random().nextInt(7)+1;
                 }
             }
         });
@@ -336,6 +363,8 @@ public class AtributosActivity extends AppCompatActivity {
                             .setMessage("Isso irá resetar seu nível e todos os seus pontos distribuídos")
                             .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
+                                    VidaMax = 0;
+
                                     personagem.setNivel(1);
                                     personagem.setForca(8);
                                     personagem.setConstituicao(8);
@@ -344,52 +373,11 @@ public class AtributosActivity extends AppCompatActivity {
                                     personagem.setSabedoria(8);
                                     personagem.setCarisma(8);
 
-                                    switch (personagem.getRaca()){
-                                        case "Anão":
-                                            personagem.setConstituicao(8+2);
-                                            break;
-                                        case "Elfo":
-                                            personagem.setDestreza(8+2);
-                                            break;
-                                        case "Halfing":
-                                            personagem.setDestreza(8+2);
-                                            break;
-                                        case "Humano":
-                                            personagem.setForca(8+1);
-                                            personagem.setConstituicao(8+1);
-                                            personagem.setInteligencia(8+1);
-                                            personagem.setDestreza(8+1);
-                                            personagem.setSabedoria(8+1);
-                                            personagem.setCarisma(8+1);
-                                            break;
-                                        case "Draconato":
-                                            personagem.setCarisma(8+1);
-                                            personagem.setForca(8+1);
-                                            break;
-                                        case "Gnomo":
-                                            personagem.setInteligencia(8+2);
-                                            break;
-                                        case "Meio-elfo":
-                                            personagem.setCarisma(8+2);
-                                            personagem.setDestreza(8+1);
-                                            personagem.setInteligencia(8+1);
-                                            break;
-                                        case "Meio-orc":
-                                            personagem.setCarisma(8+2);
-                                            personagem.setDestreza(8+1);
-                                            personagem.setForca(8+1);
-                                            break;
-                                        case "Tiefling":
-                                            personagem.setInteligencia(8+1);
-                                            personagem.setCarisma(8+2);
-                                            break;
-                                        default:
-                                            throw new IllegalArgumentException("Raça Inválida!");
-                                    }
 
-                                    int bVida = new Random().nextInt(7)+1;
-                                    personagem.setVida(14 + bVida);
+                                    int dadoVida = new Random().nextInt(7)+1;
+                                    personagem.setVida(8 + dadoVida);
 
+                                    System.out.println(personagem.getVida());
 
                                     tvPontosAtuais.setText("20");
                                     tvNivel.setText("1");
@@ -399,11 +387,14 @@ public class AtributosActivity extends AppCompatActivity {
                                     tvDestreza.setText(String.valueOf(personagem.getDestreza()));
                                     tvSabedoria.setText(String.valueOf(personagem.getSabedoria()));
                                     tvCarisma.setText(String.valueOf(personagem.getCarisma()));
-                                    tvVida.setText(String.valueOf(personagem.getVida()));
 
-                                    VidaMax = Integer.parseInt(String.valueOf(tvVida.getText()));
+                                    VidaMax += personagem.getVida();
+                                    tvVida.setText(String.valueOf(VidaMax));
+                                    System.out.println("Vida ==========================================" + VidaMax);
+
                                     PONTOS_MAX = 0;
-                                     
+
+                                    mostrarBonus();
                                     atualizarProgressBars();
                                 }
                             }).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -429,10 +420,17 @@ public class AtributosActivity extends AppCompatActivity {
                     personagem.setDestreza(Integer.parseInt((String) tvDestreza.getText()));
                     personagem.setSabedoria(Integer.parseInt((String) tvSabedoria.getText()));
                     personagem.setCarisma(Integer.parseInt((String) tvCarisma.getText()));
-                    personagem.setVida(Integer.parseInt((String) tvVida.getText()));
                     PONTOS_MAX = 0;
 
-                    VidaMax = bonusVida + Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2));
+                    if (Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2)) == bonusConstituicaoVida){
+                        VidaMax += bonusVida;
+                    }else{
+                        VidaMax = VidaMax + bonusVida + Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2)) - bonusConstituicaoVida;
+                    }
+                    personagem.setVida(VidaMax);
+                    bonusConstituicaoVida = Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2));
+                    System.out.println("=================================" + personagem.getVida() + " + " + bonusVida + " + " + Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2)));
+                    mostrarBonus();
                     atualizarProgressBars();
                     Toast.makeText(getApplicationContext(), "Informações Salvas", Toast.LENGTH_SHORT).show();
                 }
@@ -448,9 +446,91 @@ public class AtributosActivity extends AppCompatActivity {
         pbSabedoria.setProgress(Integer.parseInt(String.valueOf(tvSabedoria.getText())));
         pbCarisma.setProgress(Integer.parseInt(String.valueOf(tvCarisma.getText())));
         pbVida.setMax(VidaMax);
+        System.out.println("Vida atualizarProgressBars ==========================================" + VidaMax);
         pbVida.setProgress(Integer.parseInt(String.valueOf(tvVida.getText())));
-
     }
+
+    private void mostrarBonus(){
+        switch (personagem.getRaca()){
+            case "Anão":
+                bonusForca = 2;
+                break;
+            case "Elfo":
+                bonusDestreza = 2;
+                break;
+            case "Halfing":
+                bonusDestreza = 2;
+                break;
+            case "Humano":
+                bonusForca = 1;
+                bonusConstituicao = 1;
+                bonusInteligencia = 1;
+                bonusDestreza = 1;
+                bonusSabedoria = 1;
+                bonusCarisma = 1;
+                break;
+            case "Draconato":
+                bonusCarisma = 1;
+                bonusForca = 1;
+                break;
+            case "Gnomo":
+                bonusInteligencia = 2;
+                break;
+            case "Meio-elfo":
+                bonusCarisma = 2;
+                bonusDestreza = 1;
+                bonusInteligencia = 1;
+                break;
+            case "Meio-orc":
+                bonusCarisma = 2;
+                bonusDestreza = 1;
+                bonusForca = 1;
+                break;
+            case "Tiefling":
+                bonusInteligencia = 1;
+                bonusCarisma = 2;
+                break;
+            default:
+                throw new IllegalArgumentException("Raça Inválida!");
+        }
+        if (Integer.parseInt(String.valueOf(tvForca.getText())) > 10){
+            bonusForca += Integer.valueOf((Integer.parseInt(String.valueOf(tvForca.getText())) - 10) / 2);
+        }
+        if (Integer.parseInt(String.valueOf(tvConstituicao.getText())) > 10){
+            bonusConstituicao += Integer.valueOf((Integer.parseInt(String.valueOf(tvConstituicao.getText())) - 10) / 2);
+            bonusVida += Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2));
+        }
+        if (Integer.parseInt(String.valueOf(tvInteligencia.getText())) > 10){
+            bonusInteligencia += Integer.valueOf((Integer.parseInt(String.valueOf(tvInteligencia.getText())) - 10) / 2);
+        }
+        if (Integer.parseInt(String.valueOf(tvDestreza.getText())) > 10){
+            bonusDestreza += Integer.valueOf((Integer.parseInt(String.valueOf(tvDestreza.getText())) - 10) / 2);
+        }
+        if (Integer.parseInt(String.valueOf(tvSabedoria.getText())) > 10){
+            bonusSabedoria += Integer.valueOf((Integer.parseInt(String.valueOf(tvSabedoria.getText())) - 10) / 2);
+        }
+        if (Integer.parseInt(String.valueOf(tvCarisma.getText())) > 10){
+            bonusCarisma += Integer.valueOf((Integer.parseInt(String.valueOf(tvCarisma.getText())) - 10) / 2);
+        }
+
+        tvForcapb.setText("Força (+" + bonusForca +")");
+        tvConstituicaopb.setText("Constituição (+" + bonusConstituicao +")");
+        tvInteligenciapb.setText("Inteligência (+" + bonusInteligencia +")");
+        tvDestrezapb.setText("Destreza (+" + bonusDestreza +")");
+        tvSabedoriapb.setText("Sabedoria (+" + bonusSabedoria +")");
+        tvCarismapb.setText("Carisma (+" + bonusCarisma +")");
+        tvVidapb.setText("Vida (+" + bonusVida +")");
+
+        bonusForca = 0;
+        bonusConstituicao = 0;
+        bonusInteligencia = 0;
+        bonusDestreza = 0;
+        bonusSabedoria = 0;
+        bonusCarisma = 0;
+        bonusVida = 0;
+    }
+
+
 
 
     //Em testes
