@@ -81,9 +81,13 @@ public class PersonagensListaModFragment extends Fragment {
         itens.add(new ItemRPG("Mirror Shield", 99));
 
         personagens.add(new Personagem("The Abyss Walker",500, "Indefinido","Paladino", "Draconato",itens));
+        personagens.get(personagens.size()-1).setId(personagens.size());
         personagens.add(new Personagem("The Executor",37, "Indefinido","Ladino", "Draconato", itens));
+        personagens.get(personagens.size()-1).setId(personagens.size());
         personagens.add(new Personagem("Dragon Slayer",34,"Indefinido", "Guerreiro","Draconato", itens));
+        personagens.get(personagens.size()-1).setId(personagens.size());
         personagens.add(new Personagem("Chosen One",1,"", "Mago","Humano", itens));
+        personagens.get(personagens.size()-1).setId(personagens.size());
 
         for (Personagem personagem: personagens){
             personagem.setNivel(10);
@@ -101,7 +105,24 @@ public class PersonagensListaModFragment extends Fragment {
 
     public void adicionar(Personagem personagem){
         mPersonagens.add(personagem);
+        mPersonagens.get(mPersonagens.size()-1).setId(mPersonagens.size());
         adapterModPersonagem.notifyDataSetChanged();
+    }
+
+    public void atualizarPersonagem(Personagem personagem){
+        for(Personagem pp: mPersonagens){
+            if(pp.getId() == personagem.getId()){
+                System.out.println(pp.getId());
+                pp.setItens(personagem.getItens());
+                pp.setNivel(personagem.getNivel());
+                pp.setForca(personagem.getForca());
+                pp.setConstituicao(personagem.getConstituicao());
+                pp.setInteligencia(personagem.getInteligencia());
+                pp.setDestreza(personagem.getDestreza());
+                pp.setSabedoria(personagem.getSabedoria());
+                pp.setCarisma(personagem.getCarisma());
+            }
+        }
     }
 
     public void buscar(String s){

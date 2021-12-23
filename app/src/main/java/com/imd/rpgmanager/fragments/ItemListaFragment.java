@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import com.imd.rpgmanager.R;
 import com.imd.rpgmanager.model.ClassesRPG;
 import com.imd.rpgmanager.model.ItemRPG;
+import com.imd.rpgmanager.model.Personagem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,5 +71,15 @@ public class ItemListaFragment extends ListFragment {
         setListAdapter(mAdapter);
     }
 
+    public void mostrarItensDoPersonagem(Personagem personagem){
+        mItens = new ArrayList<ItemRPG>();
+        mItens = personagem.getItens();
+
+        mAdapter = new ArrayAdapter<ItemRPG>(
+                getActivity(),
+                android.R.layout.simple_list_item_1,
+                mItens);
+        setListAdapter(mAdapter);
+    }
 
 }

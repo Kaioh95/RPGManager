@@ -10,12 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RPGManager">
         <activity
+            android:name=".ItensActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="Itens"
+                android:value=".MainActivity"/>
+        </activity>
+        <activity
             android:name=".AtributosActivity"
-            android:parentActivityName=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="Atributos"
-                android:value=".MainActivity"/>
+                android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".MainActivity"

@@ -1,15 +1,17 @@
 package com.imd.rpgmanager.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Personagem implements Serializable {
+    private int id;
     private String nome;
     private int idade;
     private String sexo;
     private String classe;
     private String raca;
-    private transient List<ItemRPG> itens;
+    private List<ItemRPG> itens;
 
     private int Nivel = 1;
     private int Forca = 0;
@@ -28,7 +30,15 @@ public class Personagem implements Serializable {
         this.sexo = sexo;
         this.classe = classe;
         this.raca = raca;
-        this.itens = itens;
+        this.itens = new ArrayList<ItemRPG>(itens);
+    }
+
+    public void setId(int id){
+        this.id = id;
+    }
+    
+    public int getId() {
+        return id;
     }
 
     public String getNome() {
@@ -141,5 +151,9 @@ public class Personagem implements Serializable {
 
     public void setVida(int vida) {
         Vida = vida;
+    }
+
+    public void addItem(ItemRPG item){
+        this.itens.add(item);
     }
 }

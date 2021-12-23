@@ -1,6 +1,7 @@
 package com.imd.rpgmanager;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.FragmentManager;
@@ -23,6 +24,7 @@ import com.imd.rpgmanager.fragments.InfoDialogFragment;
 import com.imd.rpgmanager.fragments.ItemListaFragment;
 import com.imd.rpgmanager.fragments.PersonagemDialogFragment;
 import com.imd.rpgmanager.fragments.PersonagensListaModFragment;
+import com.imd.rpgmanager.model.ItemRPG;
 import com.imd.rpgmanager.model.Personagem;
 
 public class MainActivity extends AppCompatActivity
@@ -187,6 +189,19 @@ public class MainActivity extends AppCompatActivity
     public void ciclouEmPersonagemMod(Personagem personagem) {
         Intent it = new Intent(this, AtributosActivity.class);
         it.putExtra("personagem", personagem);
-        startActivity(it);
+        startActivityForResult(it, 1);
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 1 && resultCode == 1 && data != null){
+            Personagem personagem = (Personagem) data.getExtras().getSerializable("personagemAtualizado");
+            personagensListaModFragment.atualizarPersonagem(personagem);
+        }
+
+    }
+
 }

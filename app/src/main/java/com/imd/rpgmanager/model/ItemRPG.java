@@ -1,6 +1,8 @@
 package com.imd.rpgmanager.model;
 
-public class ItemRPG {
+import java.io.Serializable;
+
+public class ItemRPG implements Serializable {
     private String nome;
     private int qtdItem;
 
