@@ -86,6 +86,8 @@ public class AtributosActivity extends AppCompatActivity {
 
     int bonusConstituicaoVida = 0;
 
+
+    int dadoVida = 0;
     int VidaAtual = 0;
     int VidaMax = 0;
 
@@ -178,8 +180,12 @@ public class AtributosActivity extends AppCompatActivity {
 
         VidaMax = Integer.parseInt(String.valueOf(tvVida.getText()));//cálculo de vida máxima
         VidaAtual = VidaMax;
+
         //Pontos iniciais
-        tvPontosAtuais.setText("20");
+        if(personagem.getNivel() == 1){
+            tvPontosAtuais.setText("20");
+        }
+        PONTOS_MAX = Integer.parseInt(String.valueOf(tvPontosAtuais.getText()));
 
         //Calcular bonus apenas para o textView ao lado do gráfico
 
@@ -193,7 +199,7 @@ public class AtributosActivity extends AppCompatActivity {
                     tvNivel.setText(String.valueOf(Integer.parseInt(String.valueOf(tvNivel.getText())) + 1));
                     tvPontosAtuais.setText(String.valueOf(PONTOS_POR_NIVEL + Integer.parseInt(String.valueOf(tvPontosAtuais.getText()))));
                     PONTOS_MAX += PONTOS_POR_NIVEL;
-                    bonusVida += new Random().nextInt(7)+1;
+                    dadoVida += new Random().nextInt(7)+1;
                 }
             }
         });
@@ -248,6 +254,7 @@ public class AtributosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(Integer.parseInt(String.valueOf(tvPontosAtuais.getText())) < PONTOS_MAX && Integer.parseInt(String.valueOf(tvInteligencia.getText())) > personagem.getInteligencia()){
+
                     tvInteligencia.setText(String.valueOf(Integer.parseInt(String.valueOf(tvInteligencia.getText()))-1));
                     tvPontosAtuais.setText(String.valueOf(Integer.parseInt(String.valueOf(tvPontosAtuais.getText()))+1));
                 }
@@ -374,12 +381,13 @@ public class AtributosActivity extends AppCompatActivity {
                                     personagem.setCarisma(8);
 
 
-                                    int dadoVida = new Random().nextInt(7)+1;
-                                    personagem.setVida(8 + dadoVida);
+                                    int dVida = new Random().nextInt(7)+1;
+                                    personagem.setVida(8 + dVida);
 
                                     System.out.println(personagem.getVida());
 
                                     tvPontosAtuais.setText("20");
+                                    PONTOS_MAX = 20;
                                     tvNivel.setText("1");
                                     tvForca.setText(String.valueOf(personagem.getForca()));
                                     tvConstituicao.setText(String.valueOf(personagem.getConstituicao()));
@@ -391,8 +399,6 @@ public class AtributosActivity extends AppCompatActivity {
                                     VidaMax += personagem.getVida();
                                     tvVida.setText(String.valueOf(VidaMax));
                                     System.out.println("Vida ==========================================" + VidaMax);
-
-                                    PONTOS_MAX = 0;
 
                                     mostrarBonus();
                                     atualizarProgressBars();
@@ -422,14 +428,32 @@ public class AtributosActivity extends AppCompatActivity {
                     personagem.setCarisma(Integer.parseInt((String) tvCarisma.getText()));
                     PONTOS_MAX = 0;
 
+                    if(Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2)) > 0){
+                        VidaMax = dadoVida + personagem.getVida() + Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2));
+                        System.out.println("================if================= " + VidaMax + " = " + dadoVida + " + " + personagem.getVida() + " + " + Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2)));
+                        personagem.setVida(dadoVida + personagem.getVida());
+                    }else if(dadoVida > 0){
+                        VidaMax = dadoVida + personagem.getVida();
+                        System.out.println("================if================= " + VidaMax + " = " + dadoVida + " + " + personagem.getVida());
+                        personagem.setVida(dadoVida + personagem.getVida());
+                    }
+
+
+
+                    /**
                     if (Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2)) == bonusConstituicaoVida){
                         VidaMax += bonusVida;
+                        System.out.println(VidaMax +" + "+ bonusVida);
                     }else{
                         VidaMax = VidaMax + bonusVida + Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2)) - bonusConstituicaoVida;
                     }
                     personagem.setVida(VidaMax);
                     bonusConstituicaoVida = Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2));
-                    System.out.println("=================================" + personagem.getVida() + " + " + bonusVida + " + " + Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2)));
+
+                     **/
+
+
+
                     mostrarBonus();
                     atualizarProgressBars();
                     Toast.makeText(getApplicationContext(), "Informações Salvas", Toast.LENGTH_SHORT).show();
@@ -519,7 +543,7 @@ public class AtributosActivity extends AppCompatActivity {
         tvDestrezapb.setText("Destreza (+" + bonusDestreza +")");
         tvSabedoriapb.setText("Sabedoria (+" + bonusSabedoria +")");
         tvCarismapb.setText("Carisma (+" + bonusCarisma +")");
-        tvVidapb.setText("Vida (+" + bonusVida +")");
+        tvVidapb.setText("Vida (+" + bonusVida +") max("+ VidaMax +")");
 
         bonusForca = 0;
         bonusConstituicao = 0;
@@ -528,6 +552,7 @@ public class AtributosActivity extends AppCompatActivity {
         bonusSabedoria = 0;
         bonusCarisma = 0;
         bonusVida = 0;
+        dadoVida = 0;
     }
 
 
