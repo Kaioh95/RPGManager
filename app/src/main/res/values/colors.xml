@@ -20,4 +20,7 @@
 
     <color name="transparent">#00FFFFFF</color>
     <color name="progress_bar">#ECE7E4</color>
+
+    <color name="tv_nome_atributos">#373737</color>
+    <color name="tv_nome_atributos_progressbar">#0F283C</color>
 </resources>

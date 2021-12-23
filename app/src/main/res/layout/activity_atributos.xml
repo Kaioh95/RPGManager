@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -16,27 +15,40 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
 
+            <ImageView
+                android:id="@+id/ivMochila"
+                android:layout_width="70dp"
+                android:layout_height="34dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="11dp"
+                android:paddingTop="4dp"
+                android:src="@drawable/bagpack" />
+            <!--
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mochila"
                 android:gravity="center"
                 android:textSize="18dp"
+                android:textColor="#852600"
                 android:paddingHorizontal="15dp">
 
             </TextView>
-
+            -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingHorizontal="25dp"
+                android:paddingTop="5dp"
                 android:text="Atributos"
-                android:gravity="center"
+                android:textColor="#222222"
                 android:textSize="30dp"
-                android:paddingHorizontal="25dp">
+                android:textStyle="bold">
 
 
             </TextView>
@@ -44,11 +56,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mochila"
-                android:visibility="invisible"
                 android:gravity="center"
+                android:paddingHorizontal="15dp"
+                android:text="Mochila"
                 android:textSize="18dp"
-                android:paddingHorizontal="15dp">
+                android:visibility="invisible">
 
 
             </TextView>
@@ -58,8 +70,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center_horizontal"
+            android:orientation="horizontal"
             android:paddingVertical="2dp">
 
             <TextView
@@ -72,11 +84,12 @@
             </TextView>
 
             <TextView
+                android:id="@+id/tvPontosAtuais"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textSize="16dp"
-                android:id="@+id/tvPontosAtuais">
+                android:textColor="#804646"
+                android:textSize="16dp">
 
             </TextView>
 
@@ -87,15 +100,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center_horizontal"
+            android:orientation="horizontal"
             android:paddingVertical="4dp">
 
             <Button
                 android:layout_width="30dp"
-                android:visibility="invisible"
                 android:layout_height="40dp"
-                android:text="-" />
+                android:text="-"
+                android:visibility="invisible" />
 
             <LinearLayout
                 android:layout_width="100dp"
@@ -105,22 +118,23 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
                     android:text="Nível"
-                    android:gravity="center_horizontal"/>
+                    android:textColor="@color/tv_nome_atributos" />
 
                 <TextView
+                    android:id="@+id/tvNivel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tvNivel"
-                    android:text="0"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:text="0" />
             </LinearLayout>
 
             <Button
+                android:id="@+id/btnMaisNivel"
                 android:layout_width="30dp"
                 android:layout_height="40dp"
-                android:text="+"
-                android:id="@+id/btnMaisNivel"/>
+                android:text="+" />
 
         </LinearLayout>
 
@@ -132,15 +146,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center_horizontal"
+            android:orientation="horizontal"
             android:paddingVertical="2dp">
 
             <Button
+                android:id="@+id/btnMenosForca"
                 android:layout_width="30dp"
                 android:layout_height="40dp"
-                android:text="-"
-                android:id="@+id/btnMenosForca"/>
+                android:text="-" />
 
             <LinearLayout
                 android:layout_width="100dp"
@@ -150,35 +164,37 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+
                     android:text="Força"
-                    android:gravity="center_horizontal"/>
+                    android:textColor="@color/tv_nome_atributos" />
 
                 <TextView
+                    android:id="@+id/tvForca"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tvForca"
-                    android:text="13"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:text="0" />
             </LinearLayout>
 
 
             <Button
+                android:id="@+id/btnMaisForca"
                 android:layout_width="30dp"
                 android:layout_height="40dp"
-                android:text="+"
-                android:id="@+id/btnMaisForca"/>
+                android:text="+" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="            "
-                android:visibility="invisible"/>
+                android:visibility="invisible" />
 
             <Button
+                android:id="@+id/btnMenosConstituicao"
                 android:layout_width="30dp"
                 android:layout_height="40dp"
-                android:text="-"
-                android:id="@+id/btnMenosConstituicao"/>
+                android:text="-" />
 
             <LinearLayout
                 android:layout_width="100dp"
@@ -188,24 +204,24 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
                     android:text="Constituição"
-                    android:gravity="center_horizontal"/>
+                    android:textColor="@color/tv_nome_atributos" />
 
                 <TextView
+                    android:id="@+id/tvConstituicao"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tvConstituicao"
-                    android:text="0"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:text="0" />
             </LinearLayout>
 
 
             <Button
+                android:id="@+id/btnMaisConstituicao"
                 android:layout_width="30dp"
                 android:layout_height="40dp"
-                android:text="+"
-                android:id="@+id/btnMaisConstituicao"/>
-
+                android:text="+" />
 
 
         </LinearLayout>
@@ -218,15 +234,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center_horizontal"
+            android:orientation="horizontal"
             android:paddingVertical="2dp">
 
             <Button
+                android:id="@+id/btnMenosInteligencia"
                 android:layout_width="30dp"
                 android:layout_height="40dp"
-                android:text="-"
-                android:id="@+id/btnMenosInteligencia"/>
+                android:text="-" />
 
             <LinearLayout
                 android:layout_width="100dp"
@@ -236,35 +252,36 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
                     android:text="Inteligência"
-                    android:gravity="center_horizontal"/>
+                    android:textColor="@color/tv_nome_atributos" />
 
                 <TextView
+                    android:id="@+id/tvInteligencia"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tvInteligencia"
-                    android:text="0"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:text="0" />
             </LinearLayout>
 
 
             <Button
+                android:id="@+id/btnMaisInteligencia"
                 android:layout_width="30dp"
                 android:layout_height="40dp"
-                android:text="+"
-                android:id="@+id/btnMaisInteligencia"/>
+                android:text="+" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="            "
-                android:visibility="invisible"/>
+                android:visibility="invisible" />
 
             <Button
+                android:id="@+id/btnMenosDestreza"
                 android:layout_width="30dp"
                 android:layout_height="40dp"
-                android:text="-"
-                android:id="@+id/btnMenosDestreza"/>
+                android:text="-" />
 
             <LinearLayout
                 android:layout_width="100dp"
@@ -274,24 +291,24 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
                     android:text="Destreza"
-                    android:gravity="center_horizontal"/>
+                    android:textColor="@color/tv_nome_atributos" />
 
                 <TextView
+                    android:id="@+id/tvDestreza"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tvDestreza"
-                    android:text="0"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:text="0" />
             </LinearLayout>
 
 
             <Button
+                android:id="@+id/btnMaisDestreza"
                 android:layout_width="30dp"
                 android:layout_height="40dp"
-                android:text="+"
-                android:id="@+id/btnMaisDestreza"/>
-
+                android:text="+" />
 
 
         </LinearLayout>
@@ -303,15 +320,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center_horizontal"
+            android:orientation="horizontal"
             android:paddingVertical="2dp">
 
             <Button
+                android:id="@+id/btnMenosSabedoria"
                 android:layout_width="30dp"
                 android:layout_height="40dp"
-                android:text="-"
-                android:id="@+id/btnMenosSabedoria"/>
+                android:text="-" />
 
             <LinearLayout
                 android:layout_width="100dp"
@@ -321,35 +338,36 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
                     android:text="Sabedoria"
-                    android:gravity="center_horizontal"/>
+                    android:textColor="@color/tv_nome_atributos" />
 
                 <TextView
+                    android:id="@+id/tvSabedoria"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tvSabedoria"
-                    android:text="0"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:text="0" />
             </LinearLayout>
 
 
             <Button
+                android:id="@+id/btnMaisSabedoria"
                 android:layout_width="30dp"
                 android:layout_height="40dp"
-                android:text="+"
-                android:id="@+id/btnMaisSabedoria"/>
+                android:text="+" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="            "
-                android:visibility="invisible"/>
+                android:visibility="invisible" />
 
             <Button
+                android:id="@+id/btnMenosCarisma"
                 android:layout_width="30dp"
                 android:layout_height="40dp"
-                android:text="-"
-                android:id="@+id/btnMenosCarisma"/>
+                android:text="-" />
 
             <LinearLayout
                 android:layout_width="100dp"
@@ -359,24 +377,24 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
                     android:text="Carisma"
-                    android:gravity="center_horizontal"/>
+                    android:textColor="@color/tv_nome_atributos" />
 
                 <TextView
+                    android:id="@+id/tvCarisma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tvCarisma"
-                    android:text="0"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:text="0" />
             </LinearLayout>
 
 
             <Button
+                android:id="@+id/btnMaisCarisma"
                 android:layout_width="30dp"
                 android:layout_height="40dp"
-                android:text="+"
-                android:id="@+id/btnMaisCarisma"/>
-
+                android:text="+" />
 
 
         </LinearLayout>
@@ -388,15 +406,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center_horizontal"
+            android:orientation="horizontal"
             android:paddingVertical="2dp">
 
             <Button
+                android:id="@+id/btnMenosVida"
                 android:layout_width="30dp"
                 android:layout_height="40dp"
-                android:text="-"
-                android:id="@+id/btnMenosVida"/>
+                android:text="-" />
 
             <LinearLayout
                 android:layout_width="100dp"
@@ -406,38 +424,36 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
                     android:text="Vida"
-                    android:gravity="center_horizontal"/>
+                    android:textColor="@color/tv_nome_atributos" />
 
                 <TextView
+                    android:id="@+id/tvVida"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tvVida"
-                    android:text="0"
-                    android:gravity="center_horizontal"/>
+                    android:gravity="center_horizontal"
+                    android:text="0" />
             </LinearLayout>
 
 
             <Button
+                android:id="@+id/btnMaisVida"
                 android:layout_width="30dp"
                 android:layout_height="40dp"
-                android:text="+"
-                android:id="@+id/btnMaisVida"/>
+                android:text="+" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="            "
-                android:visibility="invisible"/>
+                android:visibility="invisible" />
 
             <Button
+                android:id="@+id/btnResetar"
                 android:layout_width="160dp"
                 android:layout_height="40dp"
-                android:id="@+id/btnResetar"
-                android:text="Resetar"
-                />
-
-
+                android:text="Resetar" />
 
 
         </LinearLayout>
@@ -449,28 +465,26 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center_horizontal"
+            android:orientation="horizontal"
             android:paddingVertical="2dp">
 
             <Button
+                android:id="@+id/btnCorfirmar"
                 android:layout_width="160dp"
                 android:layout_height="40dp"
-                android:id="@+id/btnCorfirmar"
-                android:text="Confirmar"
-                />
+                android:text="Confirmar" />
 
         </LinearLayout>
 
         <!--Fim da Sexta Linha de Atributos-->
 
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginTop="1dp">
+            android:layout_marginTop="1dp"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -481,17 +495,17 @@
                 <LinearLayout
                     android:layout_width="539px"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tvForcapb"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Força"
-                        android:id="@+id/tvForcapb"
-                        android:textSize="18dp"
                         android:gravity="center_horizontal"
-                        />
+                        android:text="Força"
+                        android:textColor="@color/tv_nome_atributos_progressbar"
+                        android:textSize="18dp" />
 
                 </LinearLayout>
 
@@ -501,14 +515,13 @@
                     android:orientation="vertical">
 
 
-                     <FrameLayout
+                    <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="10dp"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="20dp"
-                        android:background="@drawable/progress_bar_background"
-                        >
+                        android:background="@drawable/progress_bar_background">
 
                         <ProgressBar
                             android:id="@+id/pbForca"
@@ -519,8 +532,7 @@
                             android:indeterminate="false"
                             android:max="50"
                             android:progress="20"
-                            android:progressDrawable="@drawable/curved_progress_bar"
-                            />
+                            android:progressDrawable="@drawable/curved_progress_bar" />
 
                     </FrameLayout>
 
@@ -538,17 +550,17 @@
                 <LinearLayout
                     android:layout_width="539px"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tvConstituicaopb"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Constituiçao"
-                        android:id="@+id/tvConstituicaopb"
-                        android:textSize="18dp"
                         android:gravity="center_horizontal"
-                        />
+                        android:text="Constituiçao"
+                        android:textColor="@color/tv_nome_atributos_progressbar"
+                        android:textSize="18dp" />
 
                 </LinearLayout>
 
@@ -558,15 +570,13 @@
                     android:orientation="vertical">
 
 
-
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="10dp"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="20dp"
-                        android:background="@drawable/progress_bar_background"
-                        >
+                        android:background="@drawable/progress_bar_background">
 
                         <ProgressBar
                             android:id="@+id/pbConstituicao"
@@ -577,8 +587,7 @@
                             android:indeterminate="false"
                             android:max="50"
                             android:progress="20"
-                            android:progressDrawable="@drawable/curved_progress_bar"
-                            />
+                            android:progressDrawable="@drawable/curved_progress_bar" />
 
                     </FrameLayout>
 
@@ -596,17 +605,17 @@
                 <LinearLayout
                     android:layout_width="539px"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tvInteligenciapb"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Inteligência"
-                        android:id="@+id/tvInteligenciapb"
-                        android:textSize="18dp"
                         android:gravity="center_horizontal"
-                        />
+                        android:text="Inteligência"
+                        android:textColor="@color/tv_nome_atributos_progressbar"
+                        android:textSize="18dp" />
 
                 </LinearLayout>
 
@@ -621,8 +630,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="20dp"
-                        android:background="@drawable/progress_bar_background"
-                        >
+                        android:background="@drawable/progress_bar_background">
 
                         <ProgressBar
                             android:id="@+id/pbInteligencia"
@@ -633,8 +641,7 @@
                             android:indeterminate="false"
                             android:max="50"
                             android:progress="20"
-                            android:progressDrawable="@drawable/curved_progress_bar"
-                            />
+                            android:progressDrawable="@drawable/curved_progress_bar" />
 
                     </FrameLayout>
 
@@ -652,17 +659,17 @@
                 <LinearLayout
                     android:layout_width="539px"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tvDestrezapb"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Destreza"
-                        android:id="@+id/tvDestrezapb"
-                        android:textSize="18dp"
                         android:gravity="center_horizontal"
-                        />
+                        android:text="Destreza"
+                        android:textColor="@color/tv_nome_atributos_progressbar"
+                        android:textSize="18dp" />
 
                 </LinearLayout>
 
@@ -672,15 +679,13 @@
                     android:orientation="vertical">
 
 
-
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="10dp"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="20dp"
-                        android:background="@drawable/progress_bar_background"
-                        >
+                        android:background="@drawable/progress_bar_background">
 
                         <ProgressBar
                             android:id="@+id/pbDestreza"
@@ -691,8 +696,7 @@
                             android:indeterminate="false"
                             android:max="50"
                             android:progress="20"
-                            android:progressDrawable="@drawable/curved_progress_bar"
-                            />
+                            android:progressDrawable="@drawable/curved_progress_bar" />
 
                     </FrameLayout>
 
@@ -709,17 +713,17 @@
                 <LinearLayout
                     android:layout_width="539px"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tvSabedoriapb"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Sabedoria"
-                        android:id="@+id/tvSabedoriapb"
-                        android:textSize="18dp"
                         android:gravity="center_horizontal"
-                        />
+                        android:text="Sabedoria"
+                        android:textColor="@color/tv_nome_atributos_progressbar"
+                        android:textSize="18dp" />
 
                 </LinearLayout>
 
@@ -729,15 +733,13 @@
                     android:orientation="vertical">
 
 
-
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="10dp"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="20dp"
-                        android:background="@drawable/progress_bar_background"
-                        >
+                        android:background="@drawable/progress_bar_background">
 
                         <ProgressBar
                             android:id="@+id/pbSabedoria"
@@ -748,8 +750,7 @@
                             android:indeterminate="false"
                             android:max="50"
                             android:progress="20"
-                            android:progressDrawable="@drawable/curved_progress_bar"
-                            />
+                            android:progressDrawable="@drawable/curved_progress_bar" />
 
                     </FrameLayout>
 
@@ -766,17 +767,17 @@
                 <LinearLayout
                     android:layout_width="539px"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tvCarismapb"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Carisma"
-                        android:id="@+id/tvCarismapb"
-                        android:textSize="18dp"
                         android:gravity="center_horizontal"
-                        />
+                        android:text="Carisma"
+                        android:textColor="@color/tv_nome_atributos_progressbar"
+                        android:textSize="18dp" />
 
                 </LinearLayout>
 
@@ -786,15 +787,13 @@
                     android:orientation="vertical">
 
 
-
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="10dp"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="20dp"
-                        android:background="@drawable/progress_bar_background"
-                        >
+                        android:background="@drawable/progress_bar_background">
 
                         <ProgressBar
                             android:id="@+id/pbCarisma"
@@ -805,8 +804,7 @@
                             android:indeterminate="false"
                             android:max="50"
                             android:progress="20"
-                            android:progressDrawable="@drawable/curved_progress_bar"
-                            />
+                            android:progressDrawable="@drawable/curved_progress_bar" />
 
                     </FrameLayout>
 
@@ -823,17 +821,17 @@
                 <LinearLayout
                     android:layout_width="539px"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tvVidapb"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Vida"
-                        android:id="@+id/tvVidapb"
-                        android:textSize="18dp"
                         android:gravity="center_horizontal"
-                        />
+                        android:text="Vida"
+                        android:textColor="@color/tv_nome_atributos_progressbar"
+                        android:textSize="18dp" />
 
                 </LinearLayout>
 
@@ -843,15 +841,13 @@
                     android:orientation="vertical">
 
 
-
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="10dp"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="20dp"
-                        android:background="@drawable/progress_bar_background"
-                        >
+                        android:background="@drawable/progress_bar_background">
 
                         <ProgressBar
                             android:id="@+id/pbVida"
@@ -862,9 +858,8 @@
                             android:indeterminate="false"
                             android:max="50"
                             android:progress="20"
-                            android:progressTint="#B10000"
                             android:progressDrawable="@drawable/curved_progress_bar"
-                            />
+                            android:progressTint="#B10000" />
 
                     </FrameLayout>
 
@@ -876,7 +871,47 @@
 
     </LinearLayout>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="205dp" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="79dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="167dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="116dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="292dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
