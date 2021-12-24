@@ -121,6 +121,7 @@ public class PersonagensListaModFragment extends Fragment {
                 pp.setDestreza(personagem.getDestreza());
                 pp.setSabedoria(personagem.getSabedoria());
                 pp.setCarisma(personagem.getCarisma());
+                pp.setVida(personagem.getVida());
             }
         }
     }

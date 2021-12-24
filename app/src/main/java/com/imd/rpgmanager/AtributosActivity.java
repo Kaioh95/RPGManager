@@ -48,6 +48,7 @@ public class AtributosActivity extends AppCompatActivity {
 
     Button btnResetar;
     Button btnConfirmar;
+    Button btnVoltar;
 
 
     TextView tvPontosAtuais;
@@ -139,6 +140,7 @@ public class AtributosActivity extends AppCompatActivity {
 
         btnConfirmar = findViewById(R.id.btnCorfirmar);
         btnResetar = findViewById(R.id.btnResetar);
+        btnVoltar = findViewById(R.id.btnVoltar);
 
         //Valor dos atributos
         tvPontosAtuais = findViewById(R.id.tvPontosAtuais);
@@ -180,14 +182,33 @@ public class AtributosActivity extends AppCompatActivity {
         tvCarisma.setText(String.valueOf(personagem.getCarisma()));
 
         System.out.println("Forca Forca Forca Forca Forca "+ (personagem.getForca()));
+        System.out.println("================Before if================= " + VidaMax + " = " + dadoVida + " + " + personagem.getVida() + " + " + Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2)));
+        if(Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2)) > 0){
+            VidaMax = dadoVida + personagem.getVida() + Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2));
+            System.out.println("================if================= " + VidaMax + " = " + dadoVida + " + " + personagem.getVida() + " + " + Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2)));
+            personagem.setVida(dadoVida + personagem.getVida());
+            tvVida.setText(String.valueOf(VidaMax));
+        }else{
+            tvVida.setText(String.valueOf(personagem.getVida()));
+        }
+        VidaMax = Integer.parseInt(String.valueOf(tvVida.getText()));
 
+        /**
         tvVida.setText(String.valueOf(Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2)) + personagem.getVida()));
 
         VidaMax = Integer.parseInt(String.valueOf(tvVida.getText()));//cálculo de vida máxima
+         * */
         VidaAtual = VidaMax;
 
         //Pontos iniciais
-        if(personagem.getNivel() == 1){
+        if(personagem.getNivel() == 1
+                && personagem.getForca() == 8
+                && personagem.getConstituicao() == 8
+                && personagem.getInteligencia() == 8
+                && personagem.getDestreza() == 8
+                && personagem.getSabedoria() == 8
+                && personagem.getCarisma() == 8)
+        {
             tvPontosAtuais.setText("20");
         }
         PONTOS_MAX = Integer.parseInt(String.valueOf(tvPontosAtuais.getText()));
@@ -201,6 +222,7 @@ public class AtributosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Mochila", Toast.LENGTH_SHORT).show();
+                clicouMochila();
             }
         });
 
@@ -410,7 +432,8 @@ public class AtributosActivity extends AppCompatActivity {
 
                                     VidaMax += personagem.getVida();
                                     tvVida.setText(String.valueOf(VidaMax));
-                                    System.out.println("Vida ==========================================" + VidaMax);
+                                    personagem.setVida(VidaMax);
+                                    System.out.println("VidaMax Resetar==========================================" + VidaMax);
 
                                     mostrarBonus();
                                     atualizarProgressBars();
@@ -419,7 +442,7 @@ public class AtributosActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int which) {
                             // do nothing
                         }
-                    }).setIcon(android.R.drawable.ic_dialog_alert)
+                    }).setIcon(android.R.drawable.ic_delete)
                             .show();
                 }
             }
@@ -448,6 +471,9 @@ public class AtributosActivity extends AppCompatActivity {
                         VidaMax = dadoVida + personagem.getVida();
                         System.out.println("================if================= " + VidaMax + " = " + dadoVida + " + " + personagem.getVida());
                         personagem.setVida(dadoVida + personagem.getVida());
+                    }else{
+                        personagem.setVida(VidaMax);
+                        System.out.println("VidaMax Confirmar ==========================================" + VidaMax);
                     }
 
 
@@ -470,6 +496,15 @@ public class AtributosActivity extends AppCompatActivity {
                     atualizarProgressBars();
                     Toast.makeText(getApplicationContext(), "Informações Salvas", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        btnVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("personagem.getVida() ==========================================" + personagem.getVida());
+                it.putExtra("personagemAtualizado", personagem);
+                setResult(1, it);
+                finish();
             }
         });
     }
@@ -587,4 +622,10 @@ public class AtributosActivity extends AppCompatActivity {
         animation.start();
     }
     //-----------------
+
+    public void clicouMochila(){
+        Intent it = new Intent(this, ItensActivity.class);
+        it.putExtra("personagem", personagem);
+        startActivityForResult(it, 1);
+    }
 }
