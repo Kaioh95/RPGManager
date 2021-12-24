@@ -2,13 +2,11 @@ package com.imd.rpgmanager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.animation.ObjectAnimator;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -61,8 +59,6 @@ public class AtributosActivity extends AppCompatActivity {
     TextView tvCarisma;
     TextView tvVida;
 
-    TextView tvPontosAtuaispb;
-    TextView tvNivelpb;
     TextView tvForcapb;
     TextView tvConstituicaopb;
     TextView tvInteligenciapb;
@@ -79,7 +75,6 @@ public class AtributosActivity extends AppCompatActivity {
     ProgressBar pbCarisma;
     ProgressBar pbVida;
 
-    int Nivel = 0;
     int bonusForca = 0;
     int bonusConstituicao = 0;
     int bonusInteligencia = 0;
@@ -88,9 +83,6 @@ public class AtributosActivity extends AppCompatActivity {
     int bonusCarisma = 0;
     int bonusVida = 0;
 
-    int bonusConstituicaoVida = 0;
-
-
     int dadoVida = 0;
     int VidaAtual = 0;
     int VidaMax = 0;
@@ -98,7 +90,6 @@ public class AtributosActivity extends AppCompatActivity {
     int PONTOS_POR_NIVEL = 5;
     int NIVEL_MAX = 20;
     int PONTOS_MAX = 0; //baseado no nível do personagem quando upa
-    //int ponto_atuais = 0;
 
     Personagem personagem;
 
@@ -111,7 +102,6 @@ public class AtributosActivity extends AppCompatActivity {
 
         Intent it = getIntent();
         personagem = (Personagem) it.getExtras().getSerializable("personagem");
-        System.out.println("Teste Teste Teste Teste Teste " + personagem.getNome() + personagem.getNivel());
 
         ivMochila = findViewById(R.id.ivMochila);
 
@@ -181,23 +171,14 @@ public class AtributosActivity extends AppCompatActivity {
         tvSabedoria.setText(String.valueOf(personagem.getSabedoria()));
         tvCarisma.setText(String.valueOf(personagem.getCarisma()));
 
-        System.out.println("Forca Forca Forca Forca Forca "+ (personagem.getForca()));
-        System.out.println("================Before if================= " + VidaMax + " = " + dadoVida + " + " + personagem.getVida() + " + " + Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2)));
         if(Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2)) > 0){
             VidaMax = dadoVida + personagem.getVida() + Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2));
-            System.out.println("================if================= " + VidaMax + " = " + dadoVida + " + " + personagem.getVida() + " + " + Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2)));
             personagem.setVida(dadoVida + personagem.getVida());
             tvVida.setText(String.valueOf(VidaMax));
         }else{
             tvVida.setText(String.valueOf(personagem.getVida()));
         }
         VidaMax = Integer.parseInt(String.valueOf(tvVida.getText()));
-
-        /**
-        tvVida.setText(String.valueOf(Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2)) + personagem.getVida()));
-
-        VidaMax = Integer.parseInt(String.valueOf(tvVida.getText()));//cálculo de vida máxima
-         * */
         VidaAtual = VidaMax;
 
         //Pontos iniciais
@@ -433,7 +414,6 @@ public class AtributosActivity extends AppCompatActivity {
                                     VidaMax += personagem.getVida();
                                     tvVida.setText(String.valueOf(VidaMax));
                                     personagem.setVida(VidaMax);
-                                    System.out.println("VidaMax Resetar==========================================" + VidaMax);
 
                                     mostrarBonus();
                                     atualizarProgressBars();
@@ -465,32 +445,13 @@ public class AtributosActivity extends AppCompatActivity {
 
                     if(Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2)) > 0){
                         VidaMax = dadoVida + personagem.getVida() + Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2));
-                        System.out.println("================if================= " + VidaMax + " = " + dadoVida + " + " + personagem.getVida() + " + " + Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2)));
                         personagem.setVida(dadoVida + personagem.getVida());
                     }else if(dadoVida > 0){
                         VidaMax = dadoVida + personagem.getVida();
-                        System.out.println("================if================= " + VidaMax + " = " + dadoVida + " + " + personagem.getVida());
                         personagem.setVida(dadoVida + personagem.getVida());
                     }else{
                         personagem.setVida(VidaMax);
-                        System.out.println("VidaMax Confirmar ==========================================" + VidaMax);
                     }
-
-
-
-                    /**
-                    if (Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2)) == bonusConstituicaoVida){
-                        VidaMax += bonusVida;
-                        System.out.println(VidaMax +" + "+ bonusVida);
-                    }else{
-                        VidaMax = VidaMax + bonusVida + Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2)) - bonusConstituicaoVida;
-                    }
-                    personagem.setVida(VidaMax);
-                    bonusConstituicaoVida = Integer.parseInt(String.valueOf((personagem.getConstituicao() - 10) / 2));
-
-                     **/
-
-
 
                     mostrarBonus();
                     atualizarProgressBars();
@@ -501,7 +462,6 @@ public class AtributosActivity extends AppCompatActivity {
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("personagem.getVida() ==========================================" + personagem.getVida());
                 it.putExtra("personagemAtualizado", personagem);
                 setResult(1, it);
                 finish();
@@ -600,28 +560,9 @@ public class AtributosActivity extends AppCompatActivity {
         pbSabedoria.setProgress(Integer.parseInt(String.valueOf(tvSabedoria.getText())));
         pbCarisma.setProgress(Integer.parseInt(String.valueOf(tvCarisma.getText())));
         pbVida.setMax(VidaMax);
-        System.out.println("Vida atualizarProgressBars ==========================================" + VidaMax);
-        //pbVida.setProgress(Integer.parseInt(String.valueOf(tvVida.getText())));
+        pbVida.setProgress(Integer.parseInt(String.valueOf(tvVida.getText())));
 
-        setProgressMax(pbVida, VidaMax);
-        setProgressAnimate(pbVida, Integer.parseInt(String.valueOf(tvVida.getText())));
     }
-
-
-    //Em testes
-    private void setProgressMax(ProgressBar pb, int max) {
-        pb.setMax(max * 100);
-    }
-    private void setProgressAnimate(ProgressBar pb, int progressTo)
-    {
-        System.out.println("getProgress ==========================================" + pb.getProgress());
-        ObjectAnimator animation = ObjectAnimator.ofInt(pb, "progress", pb.getProgress(), progressTo * 100);
-        animation.setDuration(1000);
-        animation.setAutoCancel(true);
-        animation.setInterpolator(new DecelerateInterpolator());
-        animation.start();
-    }
-    //-----------------
 
     public void clicouMochila(){
         Intent it = new Intent(this, ItensActivity.class);
