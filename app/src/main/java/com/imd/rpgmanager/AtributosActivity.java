@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +20,8 @@ import com.imd.rpgmanager.model.Personagem;
 import java.util.Random;
 
 public class AtributosActivity extends AppCompatActivity {
+
+    ImageView ivMochila;
 
     Button btnMaisNivel;
 
@@ -109,6 +112,8 @@ public class AtributosActivity extends AppCompatActivity {
         personagem = (Personagem) it.getExtras().getSerializable("personagem");
         System.out.println("Teste Teste Teste Teste Teste " + personagem.getNome() + personagem.getNivel());
 
+        ivMochila = findViewById(R.id.ivMochila);
+
         btnMaisNivel = findViewById(R.id.btnMaisNivel);
 
         btnMenosForca = findViewById(R.id.btnMenosForca);
@@ -191,6 +196,13 @@ public class AtributosActivity extends AppCompatActivity {
 
         mostrarBonus();
         atualizarProgressBars();
+
+        ivMochila.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Mochila", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         btnMaisNivel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -462,17 +474,7 @@ public class AtributosActivity extends AppCompatActivity {
         });
     }
 
-    public void atualizarProgressBars(){
-        pbForca.setProgress(Integer.parseInt(String.valueOf(tvForca.getText())));
-        pbConstituicao.setProgress(Integer.parseInt(String.valueOf(tvConstituicao.getText())));
-        pbInteligencia.setProgress(Integer.parseInt(String.valueOf(tvInteligencia.getText())));
-        pbDestreza.setProgress(Integer.parseInt(String.valueOf(tvDestreza.getText())));
-        pbSabedoria.setProgress(Integer.parseInt(String.valueOf(tvSabedoria.getText())));
-        pbCarisma.setProgress(Integer.parseInt(String.valueOf(tvCarisma.getText())));
-        pbVida.setMax(VidaMax);
-        System.out.println("Vida atualizarProgressBars ==========================================" + VidaMax);
-        pbVida.setProgress(Integer.parseInt(String.valueOf(tvVida.getText())));
-    }
+
 
     private void mostrarBonus(){
         switch (personagem.getRaca()){
@@ -555,7 +557,20 @@ public class AtributosActivity extends AppCompatActivity {
         dadoVida = 0;
     }
 
+    public void atualizarProgressBars(){
+        pbForca.setProgress(Integer.parseInt(String.valueOf(tvForca.getText())));
+        pbConstituicao.setProgress(Integer.parseInt(String.valueOf(tvConstituicao.getText())));
+        pbInteligencia.setProgress(Integer.parseInt(String.valueOf(tvInteligencia.getText())));
+        pbDestreza.setProgress(Integer.parseInt(String.valueOf(tvDestreza.getText())));
+        pbSabedoria.setProgress(Integer.parseInt(String.valueOf(tvSabedoria.getText())));
+        pbCarisma.setProgress(Integer.parseInt(String.valueOf(tvCarisma.getText())));
+        pbVida.setMax(VidaMax);
+        System.out.println("Vida atualizarProgressBars ==========================================" + VidaMax);
+        //pbVida.setProgress(Integer.parseInt(String.valueOf(tvVida.getText())));
 
+        setProgressMax(pbVida, VidaMax);
+        setProgressAnimate(pbVida, Integer.parseInt(String.valueOf(tvVida.getText())));
+    }
 
 
     //Em testes
@@ -564,8 +579,9 @@ public class AtributosActivity extends AppCompatActivity {
     }
     private void setProgressAnimate(ProgressBar pb, int progressTo)
     {
+        System.out.println("getProgress ==========================================" + pb.getProgress());
         ObjectAnimator animation = ObjectAnimator.ofInt(pb, "progress", pb.getProgress(), progressTo * 100);
-        animation.setDuration(500);
+        animation.setDuration(1000);
         animation.setAutoCancel(true);
         animation.setInterpolator(new DecelerateInterpolator());
         animation.start();
