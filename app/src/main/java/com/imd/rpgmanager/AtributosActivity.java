@@ -1,5 +1,6 @@
 package com.imd.rpgmanager;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -569,4 +570,15 @@ public class AtributosActivity extends AppCompatActivity {
         it.putExtra("personagem", personagem);
         startActivityForResult(it, 1);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 1 && resultCode == 1 && data != null){
+            Personagem personagemAtualizado = (Personagem) data.getExtras().getSerializable("personagemAtualizado");
+            personagem = personagemAtualizado;
+        }
+    }
+
 }

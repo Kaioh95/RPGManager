@@ -27,7 +27,7 @@ public class InfoDialogFragment extends DialogFragment
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Informações");
-        builder.setMessage("Sobre Autores");
+        builder.setMessage("Autores:\nAlexandre Alves Andrade\nÁlvaro Prudêncio Araújo\nJoão Victor Fernandes Cabral\nKaio Henrique de Sousa");
 
         builder.setPositiveButton("Ver repositório", this);
         builder.setNegativeButton("Sair", this);
