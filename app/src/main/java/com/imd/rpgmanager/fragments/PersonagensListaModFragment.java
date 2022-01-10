@@ -144,12 +144,42 @@ public class PersonagensListaModFragment extends Fragment {
         }
         //Configurar o adapter
         adapterModPersonagem = new AdapterModPersonagem(personagemsEncontrados);
+
+        adapterModPersonagem.implementaAoClicarNoPersonagem(new AdapterModPersonagem.AoClicarNoPersonagem() {
+            @Override
+            public void clicouNoPersonagem(int position) {
+
+                Activity activity = getActivity();
+
+                if(activity instanceof AoClicarEmPersonagemMod){
+                    AoClicarEmPersonagemMod listener = (AoClicarEmPersonagemMod) activity;
+                    listener.ciclouEmPersonagemMod(mPersonagens.get(position));
+                }
+
+            }
+        });
+
         rvPersonagens.setAdapter(adapterModPersonagem);
 
     }
 
     public void limpaBusca(){
         adapterModPersonagem = new AdapterModPersonagem(mPersonagens);
+
+        adapterModPersonagem.implementaAoClicarNoPersonagem(new AdapterModPersonagem.AoClicarNoPersonagem() {
+            @Override
+            public void clicouNoPersonagem(int position) {
+
+                Activity activity = getActivity();
+
+                if(activity instanceof AoClicarEmPersonagemMod){
+                    AoClicarEmPersonagemMod listener = (AoClicarEmPersonagemMod) activity;
+                    listener.ciclouEmPersonagemMod(mPersonagens.get(position));
+                }
+
+            }
+        });
+
         rvPersonagens.setAdapter(adapterModPersonagem);
     }
 
