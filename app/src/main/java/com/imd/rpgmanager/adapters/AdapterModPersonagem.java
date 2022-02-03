@@ -22,6 +22,7 @@ public class AdapterModPersonagem extends RecyclerView.Adapter<AdapterModPersona
 
     public interface AoClicarNoPersonagem{
         void clicouNoPersonagem(int position);
+        void pressionouPersonagem(int position);
     }
 
     public AoClicarNoPersonagem listenerP;
@@ -57,7 +58,8 @@ public class AdapterModPersonagem extends RecyclerView.Adapter<AdapterModPersona
         return listaPersonagens.size();
     }
 
-    public class MinhaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class MinhaViewHolder extends RecyclerView.ViewHolder
+            implements View.OnClickListener, View.OnLongClickListener {
 
         ImageView ivClasse;
         TextView tvNome;
@@ -80,6 +82,11 @@ public class AdapterModPersonagem extends RecyclerView.Adapter<AdapterModPersona
             listenerP.clicouNoPersonagem(getLayoutPosition());
         }
 
+        @Override
+        public boolean onLongClick(View v) {
+            listenerP.pressionouPersonagem(getLayoutPosition());
+            return true;
+        }
     }
 
     public void implementaAoClicarNoPersonagem(AoClicarNoPersonagem listener){

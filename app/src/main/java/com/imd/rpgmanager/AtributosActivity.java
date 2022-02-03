@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.imd.rpgmanager.dao.PersonagemDAO;
 import com.imd.rpgmanager.model.Personagem;
 
 import java.util.Random;
@@ -457,6 +458,9 @@ public class AtributosActivity extends AppCompatActivity {
                     mostrarBonus();
                     atualizarProgressBars();
                     Toast.makeText(getApplicationContext(), "Informações Salvas", Toast.LENGTH_SHORT).show();
+
+                    PersonagemDAO personagemDAO = new PersonagemDAO(AtributosActivity.this);
+                    personagemDAO.atualizar(personagem);
                 }
             }
         });

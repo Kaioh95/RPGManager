@@ -6,12 +6,14 @@ import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.imd.rpgmanager.dao.ItemRPGDAO;
 import com.imd.rpgmanager.fragments.ItemListaFragment;
 import com.imd.rpgmanager.model.ItemRPG;
 import com.imd.rpgmanager.model.Personagem;
@@ -63,8 +65,14 @@ public class ItensActivity extends AppCompatActivity {
                     return;
                 }
 
-                ItemRPG itemNovo = new ItemRPG(nomeItem, quantidadeItem);
+                ItemRPG itemNovo = new ItemRPG(nomeItem, quantidadeItem, personagem.getId());
+
+                Log.i("INFO", "ID do dono: " + personagem.getId());
+                ItemRPGDAO itemRPGDAO = new ItemRPGDAO(ItensActivity.this);
+                itemRPGDAO.salvar(itemNovo);
+
                 personagem.addItem(itemNovo);
+
 
                 edNome.setText("");
                 edQuantidade.setText("");

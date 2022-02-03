@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Personagem implements Serializable {
-    private int id;
+    private Long id;
     private String nome;
     private int idade;
     private String sexo;
@@ -13,14 +13,14 @@ public class Personagem implements Serializable {
     private String raca;
     private List<ItemRPG> itens;
 
-    private int Nivel = 1;
-    private int Forca = 0;
-    private int Constituicao = 0;
-    private int Inteligencia = 0;
-    private int Destreza = 0;
-    private int Sabedoria = 0;
-    private int Carisma = 0;
-    private int Vida = 0;
+    private int nivel = 1;
+    private int forca = 0;
+    private int constituicao = 0;
+    private int inteligencia = 0;
+    private int destreza = 0;
+    private int sabedoria = 0;
+    private int carisma = 0;
+    private int vida = 0;
 
     public Personagem(){ }
 
@@ -33,11 +33,11 @@ public class Personagem implements Serializable {
         this.itens = new ArrayList<ItemRPG>(itens);
     }
 
-    public void setId(int id){
+    public void setId(Long id){
         this.id = id;
     }
     
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -90,67 +90,67 @@ public class Personagem implements Serializable {
     }
 
     public int getNivel() {
-        return Nivel;
+        return nivel;
     }
 
     public void setNivel(int nivel) {
-        Nivel = nivel;
+        this.nivel = nivel;
     }
 
     public int getForca() {
-        return Forca;
+        return forca;
     }
 
     public void setForca(int forca) {
-        Forca = forca;
+        this.forca = forca;
     }
 
     public int getConstituicao() {
-        return Constituicao;
+        return constituicao;
     }
 
     public void setConstituicao(int constituicao) {
-        Constituicao = constituicao;
+        this.constituicao = constituicao;
     }
 
     public int getInteligencia() {
-        return Inteligencia;
+        return inteligencia;
     }
 
     public void setInteligencia(int inteligencia) {
-        Inteligencia = inteligencia;
+        this.inteligencia = inteligencia;
     }
 
     public int getDestreza() {
-        return Destreza;
+        return destreza;
     }
 
     public void setDestreza(int destreza) {
-        Destreza = destreza;
+        this.destreza = destreza;
     }
 
     public int getSabedoria() {
-        return Sabedoria;
+        return sabedoria;
     }
 
     public void setSabedoria(int sabedoria) {
-        Sabedoria = sabedoria;
+        this.sabedoria = sabedoria;
     }
 
     public int getCarisma() {
-        return Carisma;
+        return carisma;
     }
 
     public void setCarisma(int carisma) {
-        Carisma = carisma;
+        this.carisma = carisma;
     }
 
     public int getVida() {
-        return Vida;
+        return vida;
     }
 
     public void setVida(int vida) {
-        Vida = vida;
+        this.vida = vida;
     }
 
     public void addItem(ItemRPG item){

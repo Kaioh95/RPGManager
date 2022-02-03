@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import com.imd.rpgmanager.R;
 import com.imd.rpgmanager.adapters.AdapterModPersonagem;
+import com.imd.rpgmanager.dao.ItemRPGDAO;
+import com.imd.rpgmanager.dao.PersonagemDAO;
 import com.imd.rpgmanager.model.ItemRPG;
 import com.imd.rpgmanager.model.Personagem;
 
@@ -63,6 +65,17 @@ public class PersonagensListaModFragment extends Fragment {
                 }
 
             }
+
+            @Override
+            public void pressionouPersonagem(int position) {
+
+                Activity activity = getActivity();
+
+                if(activity instanceof AoClicarEmPersonagemMod){
+                    AoClicarEmPersonagemMod listener = (AoClicarEmPersonagemMod) activity;
+                    listener.pressionouEmPersonagemMod(mPersonagens.get(position));
+                }
+            }
         });
 
         return layout;
@@ -70,24 +83,25 @@ public class PersonagensListaModFragment extends Fragment {
 
     public interface AoClicarEmPersonagemMod{
         void ciclouEmPersonagemMod(Personagem personagem);
+        void pressionouEmPersonagemMod(Personagem personagem);
     }
 
 
     private List<Personagem> carregaPersonagens(){
 
         List<Personagem> personagens = new ArrayList<Personagem>();
-        List<ItemRPG> itens = new ArrayList<ItemRPG>();
-        itens.add(new ItemRPG("Claymore", 99));
+        //List<ItemRPG> itens = new ArrayList<ItemRPG>();
+
+        PersonagemDAO personagemDAO = new PersonagemDAO(getContext());
+        personagens = personagemDAO.listar();
+
+        /*itens.add(new ItemRPG("Claymore", 99));
         itens.add(new ItemRPG("Mirror Shield", 99));
 
         personagens.add(new Personagem("The Abyss Walker",500, "Indefinido","Paladino", "Draconato",itens));
-        personagens.get(personagens.size()-1).setId(personagens.size());
         personagens.add(new Personagem("The Executor",37, "Indefinido","Ladino", "Draconato", itens));
-        personagens.get(personagens.size()-1).setId(personagens.size());
         personagens.add(new Personagem("Dragon Slayer",34,"Indefinido", "Guerreiro","Draconato", itens));
-        personagens.get(personagens.size()-1).setId(personagens.size());
         personagens.add(new Personagem("Chosen One",1,"", "Mago","Humano", itens));
-        personagens.get(personagens.size()-1).setId(personagens.size());
 
         for (Personagem personagem: personagens){
             personagem.setNivel(10);
@@ -98,18 +112,27 @@ public class PersonagensListaModFragment extends Fragment {
             personagem.setSabedoria(20);
             personagem.setCarisma(20);
             personagem.setVida(20);
-        }
+        }*/
 
         return personagens;
     }
 
     public void adicionar(Personagem personagem){
+        PersonagemDAO personagemDAO = new PersonagemDAO(getContext());
+        ItemRPGDAO itemRPGDAO = new ItemRPGDAO(getContext());
+
+        personagemDAO.salvar(personagem);
+        for (ItemRPG itemRPG: personagem.getItens()) {
+            itemRPG.setItem_personagem_id(personagem.getId());
+            itemRPGDAO.salvar(itemRPG);
+        }
+
         mPersonagens.add(personagem);
-        mPersonagens.get(mPersonagens.size()-1).setId(mPersonagens.size());
         adapterModPersonagem.notifyDataSetChanged();
     }
 
     public void atualizarPersonagem(Personagem personagem){
+
         for(Personagem pp: mPersonagens){
             if(pp.getId() == personagem.getId()){
                 System.out.println(pp.getId());
@@ -124,6 +147,9 @@ public class PersonagensListaModFragment extends Fragment {
                 pp.setVida(personagem.getVida());
             }
         }
+
+        //PersonagemDAO personagemDAO = new PersonagemDAO(getContext());
+        //personagemDAO.atualizar(personagem);
     }
 
     public void buscar(String s){
@@ -157,6 +183,17 @@ public class PersonagensListaModFragment extends Fragment {
                 }
 
             }
+
+            @Override
+            public void pressionouPersonagem(int position) {
+
+                Activity activity = getActivity();
+
+                if(activity instanceof AoClicarEmPersonagemMod){
+                    AoClicarEmPersonagemMod listener = (AoClicarEmPersonagemMod) activity;
+                    listener.pressionouEmPersonagemMod(mPersonagens.get(position));
+                }
+            }
         });
 
         rvPersonagens.setAdapter(adapterModPersonagem);
@@ -164,6 +201,9 @@ public class PersonagensListaModFragment extends Fragment {
     }
 
     public void limpaBusca(){
+        PersonagemDAO personagemDAO = new PersonagemDAO(getContext());
+        mPersonagens = personagemDAO.listar();
+
         adapterModPersonagem = new AdapterModPersonagem(mPersonagens);
 
         adapterModPersonagem.implementaAoClicarNoPersonagem(new AdapterModPersonagem.AoClicarNoPersonagem() {
@@ -177,6 +217,17 @@ public class PersonagensListaModFragment extends Fragment {
                     listener.ciclouEmPersonagemMod(mPersonagens.get(position));
                 }
 
+            }
+
+            @Override
+            public void pressionouPersonagem(int position) {
+
+                Activity activity = getActivity();
+
+                if(activity instanceof AoClicarEmPersonagemMod){
+                    AoClicarEmPersonagemMod listener = (AoClicarEmPersonagemMod) activity;
+                    listener.pressionouEmPersonagemMod(mPersonagens.get(position));
+                }
             }
         });
 

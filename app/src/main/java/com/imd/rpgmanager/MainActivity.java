@@ -2,6 +2,7 @@ package com.imd.rpgmanager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.FragmentManager;
@@ -19,7 +20,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.imd.rpgmanager.dao.PersonagemDAO;
 import com.imd.rpgmanager.fragments.InfoDialogFragment;
 import com.imd.rpgmanager.fragments.ItemListaFragment;
 import com.imd.rpgmanager.fragments.PersonagemDialogFragment;
@@ -192,14 +195,42 @@ public class MainActivity extends AppCompatActivity
         startActivityForResult(it, 1);
     }
 
+    @Override
+    public void pressionouEmPersonagemMod(Personagem personagem) {
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+
+        dialog.setTitle("Confirmar Exclusão");
+        dialog.setMessage("Deseja excluir o personagem: " + personagem.getNome() + " ?");
+
+        dialog.setPositiveButton("Excluir", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                PersonagemDAO personagemDAO = new PersonagemDAO(getApplicationContext());
+                if(personagemDAO.deletar(personagem)){
+                    Toast.makeText(getApplicationContext(), "Personagem foi removido", Toast.LENGTH_SHORT).show();
+                    personagensListaModFragment.limpaBusca();
+                } else {
+                    Toast.makeText(getApplicationContext(), "ERRO ao deletar personagem", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        dialog.setNegativeButton("Não", null);
+
+        dialog.create();
+        dialog.show();
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == 1 && resultCode == 1 && data != null){
-            Personagem personagem = (Personagem) data.getExtras().getSerializable("personagemAtualizado");
-            personagensListaModFragment.atualizarPersonagem(personagem);
+            personagensListaModFragment.limpaBusca();
+            //Personagem personagem = (Personagem) data.getExtras().getSerializable("personagemAtualizado");
+            //personagensListaModFragment.atualizarPersonagem(personagem);
         }
 
     }
