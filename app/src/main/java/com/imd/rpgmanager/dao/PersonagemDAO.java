@@ -160,8 +160,13 @@ public class PersonagemDAO {
     public boolean deletar(Personagem personagem){
 
         try{
+            for (ItemRPG itemRPG: personagem.getItens()) {
+                String[] argsI = {itemRPG.getId().toString()};
+                escreve.delete(DBHelper.TABELA_ITENSRPG, "id=?", argsI);
+            }
+
             String[] args = {personagem.getId().toString()};
-            escreve.delete(DBHelper.TABELA_ITENSRPG, "id=?", args);
+            escreve.delete(DBHelper.TABELA_PERSONAGENS, "id=?", args);
             Log.i("INFO", "Resgistro de personagem apagado com sucesso!");
         } catch (Exception e) {
             Log.i("INFO", "ERRO ao apagar registro de personagem! " + e.getMessage());

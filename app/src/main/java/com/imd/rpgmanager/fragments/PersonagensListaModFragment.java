@@ -122,12 +122,20 @@ public class PersonagensListaModFragment extends Fragment {
         ItemRPGDAO itemRPGDAO = new ItemRPGDAO(getContext());
 
         personagemDAO.salvar(personagem);
-        for (ItemRPG itemRPG: personagem.getItens()) {
+
+        List<ItemRPG> itens = personagem.getItens();
+
+        limpaBusca();
+
+        personagem = mPersonagens.get(mPersonagens.size()-1);
+
+        for (ItemRPG itemRPG: itens) {
             itemRPG.setItem_personagem_id(personagem.getId());
             itemRPGDAO.salvar(itemRPG);
         }
 
-        mPersonagens.add(personagem);
+        limpaBusca();
+        //mPersonagens.add(personagem);
         adapterModPersonagem.notifyDataSetChanged();
     }
 
@@ -179,7 +187,7 @@ public class PersonagensListaModFragment extends Fragment {
 
                 if(activity instanceof AoClicarEmPersonagemMod){
                     AoClicarEmPersonagemMod listener = (AoClicarEmPersonagemMod) activity;
-                    listener.ciclouEmPersonagemMod(mPersonagens.get(position));
+                    listener.ciclouEmPersonagemMod(personagemsEncontrados.get(position));
                 }
 
             }
@@ -191,7 +199,7 @@ public class PersonagensListaModFragment extends Fragment {
 
                 if(activity instanceof AoClicarEmPersonagemMod){
                     AoClicarEmPersonagemMod listener = (AoClicarEmPersonagemMod) activity;
-                    listener.pressionouEmPersonagemMod(mPersonagens.get(position));
+                    listener.pressionouEmPersonagemMod(personagemsEncontrados.get(position));
                 }
             }
         });

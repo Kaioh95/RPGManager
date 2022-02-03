@@ -75,6 +75,7 @@ public class AdapterModPersonagem extends RecyclerView.Adapter<AdapterModPersona
 
             cvPersonagem = itemView.findViewById(R.id.cvPersonagem);
             cvPersonagem.setOnClickListener(this);
+            cvPersonagem.setOnLongClickListener(this);
         }
 
         @Override
