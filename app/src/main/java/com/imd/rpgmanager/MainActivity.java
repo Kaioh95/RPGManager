@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity
     Spinner splineClasses;
     Button btnDescricao;
     Button btnItens;
+    Button btnMonstros;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity
         splineClasses = (Spinner) findViewById(R.id.splineClasses);
         btnDescricao = findViewById(R.id.btnDescricaoClasses);
         btnItens = findViewById(R.id.btnItensClasses);
+        btnMonstros = findViewById(R.id.btnMonstros);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.classes_array, android.R.layout.simple_spinner_item);
@@ -98,6 +100,14 @@ public class MainActivity extends AppCompatActivity
                 btnDescricao.setTextColor(getResources().getColor(R.color.text_disable));
 
                 mostrarDetalhesItensClasse(splineClasses.getSelectedItem().toString(), 1);
+            }
+        });
+
+        btnMonstros.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(getApplicationContext(), MonstrosActivity.class);
+                startActivity(it);
             }
         });
 

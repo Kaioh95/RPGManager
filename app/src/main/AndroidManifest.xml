@@ -9,8 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RPGManager">
+        <activity
+            android:name=".MonstrosActivity"
+            android:exported="false" />
 
-        <service android:name=".services.NotificacaoService" android:exported="false"></service>
+        <service
+            android:name=".services.NotificacaoService"
+            android:exported="false" />
 
         <activity
             android:name=".ItensActivity"
@@ -18,7 +23,7 @@
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="Itens"
-                android:value=".MainActivity"/>
+                android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".AtributosActivity"
