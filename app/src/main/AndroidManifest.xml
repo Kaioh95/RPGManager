@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RPGManager">
+
+        <service android:name=".services.NotificacaoService" android:exported="false"></service>
+
         <activity
             android:name=".ItensActivity"
             android:exported="true"

@@ -29,6 +29,7 @@ import com.imd.rpgmanager.fragments.PersonagemDialogFragment;
 import com.imd.rpgmanager.fragments.PersonagensListaModFragment;
 import com.imd.rpgmanager.model.ItemRPG;
 import com.imd.rpgmanager.model.Personagem;
+import com.imd.rpgmanager.services.NotificacaoService;
 
 public class MainActivity extends AppCompatActivity
         implements AdapterView.OnItemSelectedListener,
@@ -157,6 +158,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void salvouPersonagem(Personagem personagem) {
         personagensListaModFragment.adicionar(personagem);
+
+        Intent it = new Intent(getApplicationContext(), NotificacaoService.class);
+        it.putExtra(NotificacaoService.MSG, "Nome: " + personagem.getNome());
+
+        startService(it);
     }
 
     @Override
@@ -217,6 +223,7 @@ public class MainActivity extends AppCompatActivity
         });
 
         dialog.setNegativeButton("Não", null);
+        dialog.setIcon(android.R.drawable.ic_delete);
 
         dialog.create();
         dialog.show();
