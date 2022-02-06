@@ -16,6 +16,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MonstrosActivity extends AppCompatActivity {
 
@@ -42,6 +43,7 @@ public class MonstrosActivity extends AppCompatActivity {
 
         retrofit = new Retrofit.Builder()
                 .baseUrl("https://www.dnd5eapi.co/api/monsters/")
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         searchMonster.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +64,7 @@ public class MonstrosActivity extends AppCompatActivity {
             public void onResponse(Call<MonstroModel> call, Response<MonstroModel> response) {
                 if(response.isSuccessful()){
                     MonstroModel monstroModel = response.body();
-                    txtMonsterHealth.setText(monstroModel.getName());
+                    txtMonsterName.setText(monstroModel.getName());
                     txtMonsterType.setText((monstroModel.getType()));
                     txtMonsterLvl.setText(monstroModel.getChallenge_rating());
                     txtMonsterHealth.setText(monstroModel.getHit_points());
