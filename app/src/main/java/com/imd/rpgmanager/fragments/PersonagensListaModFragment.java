@@ -1,6 +1,7 @@
 package com.imd.rpgmanager.fragments;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -210,9 +211,12 @@ public class PersonagensListaModFragment extends Fragment {
 
     public void limpaBusca(){
         PersonagemDAO personagemDAO = new PersonagemDAO(getContext());
-        mPersonagens = personagemDAO.listar();
+        //mPersonagens = personagemDAO.listar();
 
-        adapterModPersonagem = new AdapterModPersonagem(mPersonagens);
+        MinhaAsyncTask tarefa = new MinhaAsyncTask();
+        tarefa.execute(personagemDAO);
+
+        //adapterModPersonagem = new AdapterModPersonagem(mPersonagens);
 
         adapterModPersonagem.implementaAoClicarNoPersonagem(new AdapterModPersonagem.AoClicarNoPersonagem() {
             @Override
@@ -240,6 +244,29 @@ public class PersonagensListaModFragment extends Fragment {
         });
 
         rvPersonagens.setAdapter(adapterModPersonagem);
+    }
+
+    class MinhaAsyncTask extends AsyncTask<PersonagemDAO, Void, List<Personagem>>{
+
+        @Override
+        protected List<Personagem> doInBackground(PersonagemDAO... personagemDAOS) {
+
+            PersonagemDAO personagemDAO = personagemDAOS[0];
+            List<Personagem> lista = null;
+
+            try {
+                lista = personagemDAO.listar();
+            }catch (IllegalArgumentException e){
+                e.printStackTrace();
+            }
+            return lista;
+        }
+
+        @Override
+        protected void onPostExecute(List<Personagem> personagems) {
+            super.onPostExecute(personagems);
+            adapterModPersonagem = new AdapterModPersonagem(personagems);
+        }
     }
 
 }
