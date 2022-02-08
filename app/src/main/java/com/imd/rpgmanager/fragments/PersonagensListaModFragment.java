@@ -211,12 +211,12 @@ public class PersonagensListaModFragment extends Fragment {
 
     public void limpaBusca(){
         PersonagemDAO personagemDAO = new PersonagemDAO(getContext());
-        //mPersonagens = personagemDAO.listar();
+        mPersonagens = personagemDAO.listar();
 
-        MinhaAsyncTask tarefa = new MinhaAsyncTask();
-        tarefa.execute(personagemDAO);
+        //MinhaAsyncTask tarefa = new MinhaAsyncTask();
+        //tarefa.execute(personagemDAO);
 
-        //adapterModPersonagem = new AdapterModPersonagem(mPersonagens);
+        adapterModPersonagem = new AdapterModPersonagem(mPersonagens);
 
         adapterModPersonagem.implementaAoClicarNoPersonagem(new AdapterModPersonagem.AoClicarNoPersonagem() {
             @Override
@@ -246,27 +246,5 @@ public class PersonagensListaModFragment extends Fragment {
         rvPersonagens.setAdapter(adapterModPersonagem);
     }
 
-    class MinhaAsyncTask extends AsyncTask<PersonagemDAO, Void, List<Personagem>>{
-
-        @Override
-        protected List<Personagem> doInBackground(PersonagemDAO... personagemDAOS) {
-
-            PersonagemDAO personagemDAO = personagemDAOS[0];
-            List<Personagem> lista = null;
-
-            try {
-                lista = personagemDAO.listar();
-            }catch (IllegalArgumentException e){
-                e.printStackTrace();
-            }
-            return lista;
-        }
-
-        @Override
-        protected void onPostExecute(List<Personagem> personagems) {
-            super.onPostExecute(personagems);
-            adapterModPersonagem = new AdapterModPersonagem(personagems);
-        }
-    }
 
 }

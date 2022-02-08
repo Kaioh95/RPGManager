@@ -12,6 +12,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.imd.rpgmanager.model.MonstroModel;
 import com.imd.rpgmanager.services.MonsterService;
 
+import java.util.Locale;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -57,7 +59,7 @@ public class MonstrosActivity extends AppCompatActivity {
     private void buscarMonstroRetrofit(String monsterName){
         MonsterService monsterService = retrofit.create(MonsterService.class);
 
-        Call<MonstroModel> call = monsterService.buscarMonstro(monsterName);
+        Call<MonstroModel> call = monsterService.buscarMonstro(monsterName.toLowerCase(Locale.ROOT));
 
         call.enqueue(new Callback<MonstroModel>() {
             @Override

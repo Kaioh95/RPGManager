@@ -26,6 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Procurar"
+        android:textColor="@color/text_hilite"
         android:background="@drawable/rounded_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,113 +36,136 @@
         app:layout_constraintVertical_bias="0.057" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edMonsterName">
+        app:layout_constraintTop_toBottomOf="@+id/edMonsterName"
+        android:background="@drawable/rounded_linear_layout">
 
-        <TextView
-            android:id="@+id/monsterName"
-            android:layout_width="wrap_content"
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nome Monstro: "
-            tools:layout_editor_absoluteX="43dp"
-            tools:layout_editor_absoluteY="126dp" />
+            android:layout_margin="4dp"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="4dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools">
 
-        <TextView
-            android:id="@+id/monsterNameGET"
-            android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/monsterName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="Nome Monstro: " />
+
+                <TextView
+                    android:id="@+id/monsterNameGET"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="Exemplo" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Exemplo"
-            tools:layout_editor_absoluteX="43dp"
-            tools:layout_editor_absoluteY="126dp" />
+            android:layout_margin="4dp"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="4dp">
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+                <TextView
+                    android:id="@+id/monsterType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="Tipo: "/>
 
-        <TextView
-            android:id="@+id/monsterType"
-            android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/monsterTypeGET"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="Exemplo" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tipo: "
-            tools:layout_editor_absoluteX="43dp"
-            tools:layout_editor_absoluteY="126dp" />
+            android:layout_margin="4dp"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="4dp">
 
-        <TextView
-            android:id="@+id/monsterTypeGET"
-            android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/monsterLvl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="Nível de desafio: "/>
+
+                <TextView
+                    android:id="@+id/monsterLvlGET"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="Exemplo" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Exemplo"
-            tools:layout_editor_absoluteX="43dp"
-            tools:layout_editor_absoluteY="126dp" />
+            android:layout_margin="4dp"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="4dp">
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+                <TextView
+                    android:id="@+id/monsterHealth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="Pontos de vida: " />
 
-        <TextView
-            android:id="@+id/monsterLvl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nível de desafio: "
-            tools:layout_editor_absoluteX="43dp"
-            tools:layout_editor_absoluteY="126dp" />
+                <TextView
+                    android:id="@+id/monsterHealthGET"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="Exemplo" />
 
-        <TextView
-            android:id="@+id/monsterLvlGET"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Exemplo"
-            tools:layout_editor_absoluteX="43dp"
-            tools:layout_editor_absoluteY="126dp" />
+            </LinearLayout>
 
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
-
-        <TextView
-            android:id="@+id/monsterHealth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pontos de vida: "
-            tools:layout_editor_absoluteX="43dp"
-            tools:layout_editor_absoluteY="126dp" />
-
-        <TextView
-            android:id="@+id/monsterHealthGET"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Exemplo"
-            tools:layout_editor_absoluteX="43dp"
-            tools:layout_editor_absoluteY="126dp" />
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 

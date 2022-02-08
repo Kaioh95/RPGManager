@@ -84,7 +84,7 @@
         android:id="@+id/fragmentListaItens"
         android:name="com.imd.rpgmanager.fragments.ItemListaFragment"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:layout_margin="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

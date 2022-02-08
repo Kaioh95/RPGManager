@@ -1,7 +1,7 @@
 package com.imd.rpgmanager.fragments;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,19 +13,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.imd.rpgmanager.R;
 import com.imd.rpgmanager.dao.ItemRPGDAO;
-import com.imd.rpgmanager.dao.PersonagemDAO;
 import com.imd.rpgmanager.model.ClassesRPG;
 import com.imd.rpgmanager.model.ItemRPG;
 import com.imd.rpgmanager.model.Personagem;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class ItemListaFragment extends ListFragment {
     public static final String TAG_ITENS = "tagITens";
@@ -81,41 +77,67 @@ public class ItemListaFragment extends ListFragment {
     }
 
     public void mostrarItensDoPersonagem(Personagem personagem){
-        mItens = new ArrayList<ItemRPG>();
-        mItens = personagem.getItens();
+        //ItemRPGDAO itemRPGDAO = new ItemRPGDAO(getContext());
+        //mItens = itemRPGDAO.listarPorDono(personagem.getId());
 
-        mAdapter = new ArrayAdapter<ItemRPG>(
+        ListaItensTask tarefa = new ListaItensTask();
+        tarefa.execute(personagem.getId());
+
+        /*mAdapter = new ArrayAdapter<ItemRPG>(
                 getActivity(),
                 android.R.layout.simple_list_item_1,
                 mItens);
-        setListAdapter(mAdapter);
+        setListAdapter(mAdapter);*/
+    }
+
+    class ListaItensTask extends AsyncTask<Long, Void, List<ItemRPG>> {
+
+        @Override
+        protected List<ItemRPG> doInBackground(Long... longs) {
+
+            Long idDono = longs[0];
+
+            ItemRPGDAO itemRPGDAO = new ItemRPGDAO(getContext());
+            List<ItemRPG> lista = null;
+
+            try{
+                lista = itemRPGDAO.listarPorDono(idDono);
+                mItens = lista;
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+            return lista;
+        }
+
+        @Override
+        protected void onPostExecute(List<ItemRPG> itemRPGS) {
+            super.onPostExecute(itemRPGS);
+
+            mAdapter = new ArrayAdapter<ItemRPG>(
+                    getActivity(),
+                    android.R.layout.simple_list_item_1,
+                    itemRPGS);
+            setListAdapter(mAdapter);
+        }
     }
 
     @Override
     public void onListItemClick(@NonNull ListView l, @NonNull View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
 
-        ItemRPG itemSelecionado = mItens.get(position);
+        Activity activity = getActivity();
 
-        new AlertDialog.Builder(getContext())
-                .setTitle("Deletar")
-                .setMessage("Isso irá DELETAR o item")
-                .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        ItemRPGDAO itemRPGDAO = new ItemRPGDAO(getContext());
-                        if(itemRPGDAO.deletar(itemSelecionado)){
-                            mostrarItensDoPersonagem();
-                            //Toast.makeText(getContext(), "Personagem foi removido", Toast.LENGTH_SHORT).show();
-                            //personagensListaModFragment.limpaBusca();
-                        } else {
-                            Toast.makeText(getContext(), "ERRO ao deletar personagem", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                // do nothing
-            }
-        }).setIcon(android.R.drawable.ic_delete)
-                .show();
+        if(activity instanceof AoClicarEmItem){
+            ItemRPG item = (ItemRPG) l.getItemAtPosition(position);
+
+            AoClicarEmItem listener = (AoClicarEmItem) activity;
+            listener.clicouEmItem(item);
+        }
     }
+
+    public interface AoClicarEmItem{
+        void clicouEmItem(ItemRPG item);
+    }
+
 }

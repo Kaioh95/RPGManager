@@ -1,26 +1,35 @@
 package com.imd.rpgmanager;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+import com.imd.rpgmanager.adapters.AdapterModPersonagem;
 import com.imd.rpgmanager.dao.ItemRPGDAO;
+import com.imd.rpgmanager.dao.PersonagemDAO;
 import com.imd.rpgmanager.fragments.ItemListaFragment;
+import com.imd.rpgmanager.fragments.PersonagensListaModFragment;
 import com.imd.rpgmanager.model.ItemRPG;
 import com.imd.rpgmanager.model.Personagem;
 
 import java.util.List;
 
-public class ItensActivity extends AppCompatActivity {
+public class ItensActivity extends AppCompatActivity implements ItemListaFragment.AoClicarEmItem{
 
     private FragmentManager mFragmentManager;
     private ItemListaFragment mItemListaFragment;
@@ -30,6 +39,8 @@ public class ItensActivity extends AppCompatActivity {
     Button btnAdd;
     Button btnSalvar;
     Personagem personagem;
+
+    LinearLayout itenslayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +58,8 @@ public class ItensActivity extends AppCompatActivity {
         edQuantidade = findViewById(R.id.edQuantidade);
         btnAdd = findViewById(R.id.btnAddItem);
         btnSalvar = findViewById(R.id.btnSalvarItens);
+
+        itenslayout = findViewById(R.id.itenslayout);
 
         atualizarItens(personagem);
 
@@ -105,5 +118,41 @@ public class ItensActivity extends AppCompatActivity {
         outState.putSerializable("personagem", personagem);
     }
 
+
+    @Override
+    public void clicouEmItem(ItemRPG item) {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(ItensActivity.this);
+
+        dialog.setTitle("Confirmar Exclusão");
+        dialog.setMessage("Deseja excluir o item: " + item.getNome() + " ?");
+
+        dialog.setPositiveButton("Excluir", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ItemRPGDAO itemRPGDAO = new ItemRPGDAO(getApplicationContext());
+                if(itemRPGDAO.deletar(item)){
+                    atualizarItens(personagem);
+
+                    Snackbar.make(itenslayout, "Item removido!", Snackbar.LENGTH_SHORT
+                    ).setAction("Desfazer?", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            itemRPGDAO.salvar(item);
+                            atualizarItens(personagem);
+                        }
+                    }).setActionTextColor(getResources().getColor(R.color.design_default_color_error)).show();
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "ERRO ao deletar item", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        dialog.setNegativeButton("Não", null);
+        dialog.setIcon(android.R.drawable.ic_delete);
+
+        dialog.create();
+        dialog.show();
+    }
 
 }
